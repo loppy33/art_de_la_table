@@ -1,0 +1,49 @@
+.btn-primary
+  background-color: var(--secondary)
+  color: var(--on-secondary)
+  padding: 0.75rem 1.5rem
+  border-radius: var(--radius-md)
+  font-family: var(--font-body)
+  font-weight: 500
+  cursor: pointer
+  transition: all 0.3s ease
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 0.5rem
+
+  &:hover
+    background-color: var(--secondary-container)
+    color: var(--primary) // Смещение к золотому металлику
+    box-shadow: var(--shadow-ambient)
+  
+  &:active
+    transform: scale(0.98)
+
+.btn-secondary
+  background-color: transparent
+  color: var(--primary)
+  padding: 0.75rem 1.5rem
+  border-radius: var(--radius-md)
+  font-family: var(--font-body)
+  font-weight: 500
+  cursor: pointer
+  border: var(--border-ghost)
+
+  transition: all 0.3s ease
+
+  &:hover
+    border-color: var(--secondary)
+    color: var(--secondary)
+
+.btn-text
+  background: none
+  border: none
+  color: var(--on-surface-variant)
+  font-family: var(--font-body)
+  font-weight: 500
+  cursor: pointer
+  transition: 0.3s ease
+  
+  &:hover
+    color: var(--primary)

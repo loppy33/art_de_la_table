@@ -1,0 +1,107 @@
+// --- Fonts ---
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap')
+
+// ✅ ОСТАВЛЯЕМ ТОЛЬКО Material Symbols (новые иконки)
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined')
+
+// --- Reset ---
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  border: none
+  outline: none
+
+// 💥 ФИКС ДЛЯ ИКОНОК (САМОЕ ВАЖНОЕ)
+.material-symbols-outlined
+  font-family: 'Material Symbols Outlined' !important
+  font-weight: normal
+  font-style: normal
+  font-size: 24px
+  line-height: 1
+  letter-spacing: normal
+  text-transform: none
+  display: inline-block
+  white-space: nowrap
+  direction: ltr
+  -webkit-font-smoothing: antialiased
+
+body
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  font-family: var(--font-body)
+  font-size: var(--text-body-md)
+  line-height: 1.5
+  font-weight: 400
+  
+  color: var(--on-background)
+  background-color: var(--surface)
+  font-synthesis: none
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+main
+  flex: 1
+
+// --- Типографика ---
+h1, h2, h3, h4, h5, h6
+  font-family: var(--font-heading)
+  color: var(--primary)
+  font-weight: 400
+
+.display-lg, h1
+  font-size: var(--text-display-lg)
+  line-height: 1.1
+  letter-spacing: -0.02em
+  margin-bottom: var(--spacing-2)
+
+.headline-lg, h2
+  font-size: var(--text-headline-lg)
+  line-height: 1.2
+  margin-bottom: var(--spacing-2)
+
+p
+  color: var(--on-surface-variant)
+  margin-bottom: var(--spacing-3)
+
+.label-md
+  font-family: var(--font-body)
+  font-size: var(--text-label-md)
+  text-transform: uppercase
+  letter-spacing: 0.15em
+  font-weight: 600
+
+textarea, input
+  font-family: var(--font-body)
+
+a
+  text-decoration: none
+  color: var(--primary)
+  transition: .3s ease
+  &:hover
+    color: var(--secondary)
+
+ul, li
+  list-style: none
+
+.no-scroll
+  overflow: hidden
+
+.container
+  max-width: var(--container-width)
+  margin: 0 auto
+  padding: 0 20px
+
+// --- UI ---
+.glassmorphism
+  background-color: rgba(255, 255, 255, 0.719)
+  backdrop-filter: blur(16px)
+  -webkit-backdrop-filter: blur(16px)
+
+.ghost-border
+  border: var(--border-ghost)
+
+.ambient-shadow
+  box-shadow: var(--shadow-ambient)

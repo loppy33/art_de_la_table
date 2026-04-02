@@ -1,0 +1,338 @@
+.contact
+  // Базовые утилиты
+  .text-primary
+    color: var(--primary)
+  .text-white
+    color: #ffffff
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .text-muted
+    color: var(--on-surface-variant)
+  .text-medium
+    font-weight: 500
+    font-size: 1.125rem
+  .italic
+    font-style: italic
+  .font-light
+    font-weight: 300
+  .bg-low
+    background-color: var(--surface-container-low)
+  .m-0
+    margin: 0
+  .mb-10
+    margin-bottom: var(--spacing-10)
+
+  .label-gold
+    color: var(--secondary)
+    display: block
+    margin-bottom: var(--spacing-3)
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.875rem
+
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.75rem
+    text-transform: uppercase
+    letter-spacing: 0.15em
+    margin-bottom: 0.25rem
+    display: block
+
+  .icon-gold
+    color: var(--secondary)
+    font-size: 1.5rem
+    margin-top: 0.25rem
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-10)
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    color: var(--primary)
+
+  // --- Hero Section ---
+  .contact-hero
+    padding-top: var(--spacing-16)
+    padding-bottom: var(--spacing-10)
+    
+    @media (min-width: 768px)
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-16)
+
+    &__grid
+      display: grid
+      gap: var(--spacing-6)
+      @media (min-width: 992px)
+        grid-template-columns: 8fr 4fr
+        align-items: flex-end
+        gap: var(--spacing-10)
+
+    &__desc
+      padding-bottom: 0.5rem
+      p
+        font-size: 1.125rem
+        color: var(--on-surface-variant)
+        margin: 0
+        @media (min-width: 992px)
+          text-align: right
+          margin-left: auto
+          max-width: 350px
+
+  // --- Main Grid Section ---
+  .contact-main
+    padding-bottom: var(--spacing-20)
+
+    &__grid
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 4fr 8fr
+        gap: var(--spacing-20)
+
+  // Left Column (Sidebar)
+  .contact-sidebar
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-16)
+
+    .info-card
+      padding: var(--spacing-10)
+      border-radius: var(--radius-lg)
+      // Имитируем outline_variant/10 через ghost-border
+      border: var(--border-ghost) 
+
+    .info-list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+
+    .info-item
+      display: flex
+      align-items: flex-start
+      gap: var(--spacing-3)
+      p
+        margin: 0
+
+    .link-underline
+      font-size: 1.125rem
+      font-weight: 500
+      color: var(--primary)
+      text-decoration: underline
+      text-decoration-color: rgba(195, 198, 207, 0.5)
+      text-underline-offset: 4px
+      transition: all 0.3s ease
+      &:hover
+        color: var(--secondary)
+        text-decoration-color: var(--secondary)
+
+    .decorative-image
+      position: relative
+      border-radius: var(--radius-lg)
+      overflow: hidden
+      aspect-ratio: 4 / 5
+      background-color: var(--surface-container)
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.9
+        transition: transform 0.7s ease
+      
+      &:hover img
+        transform: scale(1.05)
+
+      .image-quote
+        position: absolute
+        bottom: 1.5rem
+        left: 1.5rem
+        right: 1.5rem
+        padding: var(--spacing-6)
+        border-radius: var(--radius-md)
+        background-color: rgba(255, 255, 255, 0.8)
+
+  // Right Column (The Form)
+  .contact-form-wrapper
+    background-color: var(--surface-container-lowest)
+    padding: var(--spacing-10)
+    border-radius: var(--radius-lg)
+    height: fit-content
+    
+    @media (min-width: 768px)
+      padding: var(--spacing-16)
+
+  .atelier-form
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-10) var(--spacing-10)
+    
+    @media (min-width: 768px)
+      grid-template-columns: 1fr 1fr
+
+    .full-width
+      grid-column: 1 / -1
+
+    .form-group
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+      .label-md
+        color: var(--on-surface-variant)
+        opacity: 0.8
+
+    // Стиль полей ввода (только нижняя линия)
+    input, textarea, select
+      width: 100%
+      background: transparent
+      border: none
+      border-bottom: 1px solid rgba(195, 198, 207, 0.5) // outline-variant
+      padding: 0.75rem 0
+      font-family: var(--font-body)
+      font-size: 1rem
+      color: var(--primary)
+      border-radius: 0
+      transition: border-color 0.3s ease
+      
+      &::placeholder
+        color: rgba(195, 198, 207, 0.8)
+
+      &:focus
+        outline: none
+        border-bottom-color: var(--secondary)
+
+    textarea
+      resize: none
+
+    .select-wrapper
+      position: relative
+      
+      select
+        appearance: none
+        cursor: pointer
+        padding-right: 2rem
+
+      .dropdown-icon
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
+        pointer-events: none
+        color: var(--on-surface-variant)
+
+    .form-submit
+      margin-top: var(--spacing-6)
+      .w-full-mobile
+        width: 100%
+        @media (min-width: 768px)
+          width: auto
+          padding-left: 3rem
+          padding-right: 3rem
+
+  // --- Priority Options Section (CTA) ---
+  .contact-priority
+    padding-bottom: var(--spacing-20)
+
+    .priority-card
+      background-color: var(--primary)
+      border-radius: var(--radius-lg)
+      position: relative
+      overflow: hidden
+      padding: var(--spacing-10)
+      
+      @media (min-width: 768px)
+        padding: var(--spacing-20)
+
+      &__overlay
+        position: absolute
+        inset: 0
+        opacity: 0.1
+        pointer-events: none
+        background-image: radial-gradient(circle at 20% 50%, var(--secondary) 0%, transparent 50%)
+
+      &__content
+        position: relative
+        z-index: 10
+        display: grid
+        gap: var(--spacing-10)
+        
+        @media (min-width: 992px)
+          grid-template-columns: 1fr 2fr
+          align-items: center
+
+      .text-block
+        .headline-lg
+          margin-bottom: var(--spacing-3)
+        p
+          margin: 0
+          font-size: 1.125rem
+
+      .action-buttons
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-6)
+        
+        @media (min-width: 600px)
+          flex-direction: row
+        @media (min-width: 992px)
+          justify-content: flex-end
+
+      .priority-btn
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 1.5rem 2rem
+        border-radius: var(--radius-md)
+        transition: all 0.3s ease
+        flex-grow: 1
+        
+        .btn-text
+          text-align: left
+        
+        .btn-title
+          font-family: var(--font-body)
+          color: #fff
+          font-size: 1.25rem
+          font-weight: 500
+          display: block
+          margin-top: 0.25rem
+
+        span.material-symbols-outlined
+          transition: transform 0.3s ease
+          font-size: 1.5rem
+
+        &:hover span.material-symbols-outlined
+          transform: translateX(8px)
+
+      .btn-gold-solid
+        background-color: var(--secondary)
+        color: var(--on-secondary)
+        
+        .label-sm
+          color: rgba(255, 255, 255, 0.8)
+          
+        &:hover
+          background-color: var(--secondary-container)
+          color: var(--on-secondary-container)
+          .label-sm
+            color: rgba(120, 90, 26, 0.8) // on-secondary-container opacity
+
+      .btn-glass-border
+        background-color: rgba(255, 255, 255, 0.05)
+        backdrop-filter: blur(8px)
+        -webkit-backdrop-filter: blur(8px)
+        border: 1px solid rgba(255, 255, 255, 0.1)
+        color: #ffffff
+
+        .label-sm
+          color: rgba(255, 255, 255, 0.6)
+
+        &:hover
+          background-color: #ffffff
+          color: var(--primary)
+          .label-sm
+            color: var(--on-surface-variant)

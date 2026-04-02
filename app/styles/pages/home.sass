@@ -1,0 +1,502 @@
+.home
+  // Вспомогательные классы
+  .text-white
+    color: #ffffff
+  .text-center
+    text-align: center
+  .label-gold
+    color: var(--secondary)
+    margin-bottom: var(--spacing-3)
+    display: block
+  .bg-low
+    background-color: var(--surface-container-low)
+
+  // Общие отступы для секций (Mobile First)
+  section
+    padding: var(--spacing-16) 0
+    @media (min-width: 768px)
+      padding: var(--spacing-20) 0
+
+  // --- Hero Section ---
+  .hero
+    position: relative
+    height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    overflow: hidden
+    padding: 0 // Переопределяем padding секции
+
+    &__bg
+      position: absolute
+      inset: 0
+      z-index: 0
+      background-color: var(--primary-container)
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.6
+    
+    &__overlay
+      position: absolute
+      inset: 0
+      background: linear-gradient(to bottom, rgba(0, 12, 30, 0.4), transparent, rgba(0, 12, 30, 0.8))
+
+    &__content
+      position: relative
+      z-index: 10
+      max-width: 800px
+      padding: 0 20px
+
+    &__subtitle
+      font-size: 1.125rem
+      margin-bottom: var(--spacing-10)
+      opacity: 0.9
+      @media (min-width: 768px)
+        font-size: 1.5rem
+
+    &__cta
+      color: #ffffff
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4)
+      padding-bottom: var(--spacing-2)
+      border-radius: 0
+      font-size: 1.4rem
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      margin: auto
+      gap: .5rem
+      &:hover
+        border-bottom-color: #ffffff
+
+  // --- Partners ---
+  .partners
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: var(--spacing-6)
+    padding: var(--spacing-6) 20px
+    
+    span
+      font-family: var(--font-heading)
+      font-size: 1.25rem
+      font-weight: 700
+      color: var(--on-surface-variant)
+      opacity: 0.4
+      transition: 0.5s ease
+      &:hover
+        opacity: 1
+
+    @media (min-width: 768px)
+      gap: var(--spacing-20)
+      padding: var(--spacing-10) 20px
+      span
+        font-size: 1.5rem
+
+  // --- Mobilier Section ---
+  .section-mobilier
+    padding: 1rem
+    display: grid
+    gap: var(--spacing-10)
+    align-items: center
+    
+    @media (min-width: 992px)
+      grid-template-columns: 7fr 5fr
+      gap: var(--spacing-16)
+
+    img
+        width: 100%
+    &__image-wrapper
+      position: relative
+      img
+        width: 100%
+        border-radius: var(--radius-lg)
+        position: relative
+        z-index: 2
+
+    &__blur-blob
+      position: absolute
+      top: -2rem
+      left: -2rem
+      width: 10rem
+      height: 10rem
+      background-color: rgba(119, 90, 25, 0.1)
+      border-radius: 50%
+      filter: blur(2rem)
+      z-index: 1
+      @media (min-width: 768px)
+        width: 16rem
+        height: 16rem
+        filter: blur(3rem)
+
+  // --- Audit Section ---
+  .section-audit
+    .audit__grid
+      display: grid
+      gap: var(--spacing-10)
+      align-items: center
+      @media (min-width: 992px)
+        grid-template-columns: 5fr 7fr
+        gap: var(--spacing-16)
+
+    .audit__text
+      @media (min-width: 992px)
+        order: -1
+
+    .audit__card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-3)
+      border-radius: var(--radius-lg)
+      position: relative
+      @media (min-width: 768px)
+        padding: var(--spacing-6)
+
+      img
+        width: 100%
+        border-radius: var(--radius-md)
+
+    .audit__badge
+      position: absolute
+      bottom: -1.5rem
+      left: -1.5rem
+      background-color: var(--secondary)
+      color: var(--on-secondary)
+      padding: var(--spacing-3) var(--spacing-6)
+      border-radius: var(--radius-md)
+      display: none
+      @media (min-width: 768px)
+        display: block
+      
+      p
+        font-family: var(--font-heading)
+        font-style: italic
+        font-size: 1.25rem
+        margin: 0
+        color: #fff
+
+  // --- Machines Section (Bento Grid) ---
+  .section-machines
+    .section-header
+      margin-bottom: var(--spacing-10)
+      @media (min-width: 768px)
+        margin-bottom: var(--spacing-16)
+
+    .machines__grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      @media (min-width: 992px)
+        grid-template-columns: 2fr 1fr
+
+    .machine__card-large
+      border-radius: var(--radius-lg)
+      overflow: hidden
+      display: flex
+      flex-direction: column
+      
+      .machine__content
+        padding: var(--spacing-6)
+        @media (min-width: 768px)
+          padding: var(--spacing-10)
+        
+        h3
+          font-family: var(--font-heading)
+          font-size: 2rem
+          margin-bottom: var(--spacing-3)
+          color: var(--primary)
+        p
+          max-width: 400px
+          margin-bottom: var(--spacing-6)
+        
+      .machine__actions
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-3)
+        @media (min-width: 500px)
+          flex-direction: row
+          align-items: center
+
+      .machine__image
+        height: 200px
+        overflow: hidden
+        @media (min-width: 768px)
+          height: 320px
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+          transition: transform 0.7s ease
+        &:hover img
+          transform: scale(1.05)
+
+    .machine__card-small
+      background-color: var(--primary)
+      color: #ffffff
+      padding: var(--spacing-6)
+      border-radius: var(--radius-lg)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      @media (min-width: 768px)
+        padding: var(--spacing-10)
+
+      .icon-gold
+        font-size: 3rem
+        color: var(--secondary)
+        margin-bottom: var(--spacing-6)
+
+      h3
+        font-family: var(--font-heading)
+        font-size: 2rem
+        margin-bottom: var(--spacing-3)
+        color: #ffffff
+      p
+        color: rgba(255, 255, 255, 0.7)
+        margin: 0
+
+  // --- Why Us Section ---
+  .section-why-us
+    background-color: var(--primary-container)
+    color: #ffffff
+    position: relative
+    overflow: hidden
+
+    .display-lg
+      color: #ffffff
+
+    .why-us__bg-skew
+      position: absolute
+      top: 0
+      right: 0
+      width: 100%
+      height: 100%
+      background-color: rgba(119, 90, 25, 0.05) // --secondary / 5%
+      transform: skewX(-12deg) translateX(50%)
+      @media (min-width: 768px)
+        width: 33%
+        transform: skewX(-12deg) translateX(20%)
+
+    .why-us__grid
+      position: relative
+      z-index: 10
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+
+    .why-us__features
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-10)
+      margin-top: var(--spacing-10)
+
+      .feature
+        display: flex
+        gap: var(--spacing-6)
+        
+        &__icon
+          background-color: rgba(119, 90, 25, 0.2)
+          padding: 1rem
+          border-radius: 15%
+          display: flex
+          height: fit-content
+          span
+            color: var(--secondary)
+        
+        &__text h4
+          font-family: var(--font-body)
+          font-size: 1.25rem
+          font-weight: 700
+          color: #ffffff
+          margin-bottom: 0.5rem
+        &__text p
+          color: rgba(255, 255, 255, 0.6)
+
+    .why-us__stats
+      display: grid
+      grid-template-columns: 1fr 1fr
+      gap: var(--spacing-6)
+      align-items: start
+
+      .glassmorphism-dark
+        background-color: rgba(255, 255, 255, 0.05)
+        backdrop-filter: blur(12px)
+        -webkit-backdrop-filter: blur(12px)
+        border: 1px solid rgba(255, 255, 255, 0.1) // Ghost border для тёмного фона
+        padding: var(--spacing-6)
+        border-radius: var(--radius-md)
+        text-align: center
+
+      .stat-value
+        color: var(--secondary)
+        font-weight: 700
+        font-size: 2rem
+        margin-bottom: var(--spacing-2)
+        @media (min-width: 768px)
+          font-size: 2.5rem
+
+      .mt-offset
+        @media (min-width: 768px)
+          margin-top: var(--spacing-10)
+
+  // --- Testimonials ---
+  .section-testimonials
+    .headline-lg
+      margin-bottom: var(--spacing-10)
+      @media (min-width: 768px)
+        margin-bottom: var(--spacing-16)
+
+    .testimonials__grid
+      display: grid
+      gap: var(--spacing-6)
+      @media (min-width: 768px)
+        grid-template-columns: repeat(2, 1fr)
+      @media (min-width: 992px)
+        grid-template-columns: repeat(3, 1fr)
+
+    .testimonial__card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-6)
+      border-radius: var(--radius-md)
+      box-shadow: var(--shadow-ambient)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      .quote
+        font-style: italic
+        margin-bottom: var(--spacing-6)
+      
+      .author
+        display: flex
+        align-items: center
+        gap: var(--spacing-3)
+        
+        &__avatar
+          width: 3rem
+          height: 3rem
+          background-color: var(--surface-container)
+          border-radius: 50%
+        &__name
+          font-weight: 700
+          color: var(--primary)
+          margin: 0
+        &__role
+          font-size: var(--text-label-md)
+          color: var(--on-surface-variant)
+          margin: 0
+
+  // --- FAQ ---
+  .section-faq
+    .faq__container
+      max-width: 800px
+
+    .headline-lg
+      margin-bottom: var(--spacing-10)
+
+    .faq__list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-3)
+
+    .faq__item
+      background-color: var(--surface-container-lowest)
+      border-radius: var(--radius-md)
+      overflow: hidden
+
+      summary
+        padding: var(--spacing-6)
+        display: flex
+        justify-content: space-between
+        align-items: center
+        font-weight: 500
+        cursor: pointer
+        list-style: none
+        
+        &::-webkit-details-marker
+          display: none
+        
+        span
+          transition: transform 0.3s ease
+
+      &[open] summary span
+        transform: rotate(180deg)
+
+      .faq__content
+        padding: 0 var(--spacing-6) var(--spacing-6)
+        color: var(--on-surface-variant)
+
+  // --- CTA Section ---
+  .section-cta
+    position: relative
+    background-color: var(--primary)
+    text-align: center
+    padding: var(--spacing-20) 20px
+
+    .cta__bg
+      position: absolute
+      inset: 0
+      opacity: 0.1
+      pointer-events: none
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    
+    .cta__content
+      position: relative
+      z-index: 10
+      max-width: 800px
+      margin: 0 auto
+
+      .display-lg
+        margin-bottom: var(--spacing-6)
+      p
+        font-size: 1.25rem
+        opacity: 0.7
+        margin-bottom: var(--spacing-10)
+      
+      .btn-primary
+        font-size: 1.125rem
+        padding: 1rem 2rem
+
+  // --- Newsletter ---
+  .section-newsletter
+    background-color: var(--surface-container)
+    
+    .newsletter__container
+      max-width: 800px
+      text-align: center
+
+    .headline-lg
+      margin-bottom: var(--spacing-3)
+    
+    p
+      margin-bottom: var(--spacing-10)
+
+    .newsletter__form
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-3)
+      max-width: 600px
+      margin: 0 auto
+
+      @media (min-width: 600px)
+        flex-direction: row
+
+      input
+        flex-grow: 1
+        padding: 1rem 1.5rem
+        border-radius: var(--radius-md)
+        border: var(--border-ghost)
+        background-color: var(--surface-container-lowest)
+        font-family: var(--font-body)
+        transition: border-color 0.3s ease
+        &:focus
+          border-color: var(--secondary)
+      
+      .btn-primary
+        white-space: nowrap

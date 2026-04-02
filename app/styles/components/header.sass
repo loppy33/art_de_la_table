@@ -1,0 +1,43 @@
+.header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 50
+  padding: var(--spacing-3) 0
+  // glassmorphism применяется глобальным классом
+
+  &__nav
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__logo
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    font-style: italic
+    color: var(--primary)
+    letter-spacing: -0.02em
+
+  &__links
+    display: none
+    
+    @media (min-width: 768px)
+      display: flex
+      gap: var(--spacing-6)
+    
+    a
+      color: var(--on-surface-variant)
+      font-weight: 500
+      
+      &.active, &:hover
+        color: var(--primary)
+      
+      &.active
+        border-bottom: 2px solid var(--secondary)
+        padding-bottom: 4px
+
+  &__actions
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)

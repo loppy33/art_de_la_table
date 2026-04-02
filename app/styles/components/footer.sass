@@ -1,0 +1,43 @@
+.footer
+  background-color: var(--surface-container-low)
+  padding-top: var(--spacing-20)
+  // Убраны бордеры согласно No-Line Rule
+
+  &__grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-10)
+    padding-bottom: var(--spacing-16)
+
+    @media (min-width: 768px)
+      grid-template-columns: 2fr 1fr 1fr 1fr
+
+  &__brand
+    .footer__logo
+      font-family: var(--font-heading)
+      font-size: 1.5rem
+      color: var(--primary)
+      margin-bottom: var(--spacing-3)
+    
+    p
+      max-width: 300px
+
+  &__col
+    h4
+      margin-bottom: var(--spacing-6)
+      color: var(--primary)
+
+    ul li
+      margin-bottom: var(--spacing-3)
+      
+    a
+      color: var(--on-surface-variant)
+      &:hover
+        color: var(--secondary)
+
+  &__bottom
+    text-align: center
+    padding: var(--spacing-6) 0
+    background-color: var(--surface-container) // Цветовой переход вместо бордера
+    font-size: var(--text-label-md)
+    color: var(--on-surface-variant)

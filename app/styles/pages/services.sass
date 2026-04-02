@@ -1,0 +1,356 @@
+.services
+  // Вспомогательные классы
+  .label-gold
+    color: var(--secondary)
+    margin-bottom: var(--spacing-6)
+    display: inline-block
+    border: var(--border-ghost)
+    padding: 0.25rem 1rem
+    border-radius: 2rem
+
+  .text-secondary
+    color: var(--secondary)
+  .text-white
+    color: #ffffff
+  .text-gold
+    color: var(--secondary-container)
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .mt-6
+    margin-top: var(--spacing-6)
+  .mt-auto
+    margin-top: auto
+
+  // Общие отступы секций
+  section
+    padding: var(--spacing-16) 20px
+    @media (min-width: 768px)
+      padding: var(--spacing-20) 20px
+
+  // Заголовки карточек (меньший размер Serif)
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.75rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-3)
+  
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-2)
+
+  // --- Hero Section ---
+  .services-hero
+    &__grid
+      display: grid
+      gap: var(--spacing-16)
+      align-items: center
+      @media (min-width: 992px)
+        grid-template-columns: 7fr 5fr
+
+    &__content
+      p
+        font-size: 1.25rem
+        max-width: 600px
+
+    &__visual
+      position: relative
+      
+      .image-wrapper
+        border-radius: var(--radius-lg)
+        overflow: hidden
+        aspect-ratio: 4 / 5
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+    &__badge
+      position: absolute
+      bottom: -1.5rem
+      left: -1.5rem
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-6)
+      border-radius: var(--radius-md)
+      text-align: center
+      
+      .badge-value
+        font-family: var(--font-heading)
+        font-weight: 700
+        font-size: 2.5rem
+        color: var(--primary)
+        line-height: 1
+        margin-bottom: 0.25rem
+
+  // --- Bento Grid Section ---
+  .services-bento
+    padding: var(--spacing-20) 0
+
+    &__header
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+      margin-bottom: var(--spacing-16)
+      
+      @media (min-width: 992px)
+        flex-direction: row
+        align-items: flex-end
+        justify-content: space-between
+      
+      p
+        max-width: 600px
+        margin-bottom: 0
+      
+      .decorative-line
+        display: none
+        @media (min-width: 992px)
+          display: block
+          flex-grow: 1
+          height: 1px
+          background-color: var(--outline-variant)
+          opacity: 0.2
+          margin: 0 var(--spacing-10) 0.5rem
+
+    .bento-grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      
+      @media (min-width: 768px)
+        grid-template-columns: repeat(3, 1fr)
+
+    .bento-card
+      background-color: var(--surface-container-lowest)
+      border-radius: var(--radius-lg)
+      overflow: hidden
+      transition: box-shadow 0.3s ease
+      
+      &:hover
+        box-shadow: var(--shadow-ambient)
+
+      &__content
+        padding: var(--spacing-10)
+        display: flex
+        flex-direction: column
+        height: 100%
+
+      .icon-gold
+        font-size: 3rem
+        color: var(--secondary)
+        margin-bottom: var(--spacing-6)
+
+    // Специфичные карточки
+    .card-large
+      @media (min-width: 768px)
+        grid-column: span 2
+      
+      .tags
+        display: flex
+        flex-wrap: wrap
+        gap: 0.5rem
+        margin-top: var(--spacing-10)
+        
+      .tag
+        background-color: var(--surface-container-low)
+        color: var(--primary)
+        padding: 0.25rem 0.75rem
+        border-radius: var(--radius-sm)
+        font-size: var(--text-label-md)
+        font-weight: 600
+
+    .card-primary
+      background-color: var(--primary)
+      color: #ffffff
+      position: relative
+      overflow: hidden
+      
+      .relative-z
+        position: relative
+        z-index: 10
+      
+      .icon-light
+        font-size: 3rem
+        color: var(--secondary-container)
+        margin-bottom: var(--spacing-6)
+      
+      .bg-icon
+        position: absolute
+        bottom: -2rem
+        right: -2rem
+        font-size: 12rem
+        color: #ffffff
+        opacity: 0.05
+        transition: transform 0.7s ease
+      
+      &:hover .bg-icon
+        transform: scale(1.1)
+
+    .card-standard
+      .checklist
+        margin-top: var(--spacing-6)
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-3)
+        
+        li
+          display: flex
+          align-items: center
+          gap: 0.5rem
+          color: var(--on-surface-variant)
+          font-size: 0.875rem
+          
+          .icon-gold
+            font-size: 1.25rem
+            margin-bottom: 0
+
+    .card-wide-image
+      display: flex
+      flex-direction: column
+      @media (min-width: 768px)
+        grid-column: span 2
+        flex-direction: row
+      
+      .card-image
+        height: 250px
+        @media (min-width: 768px)
+          width: 50%
+          height: auto
+        
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+      
+      .bento-card__content
+        @media (min-width: 768px)
+          width: 50%
+          justify-content: center
+
+      .link-with-arrow
+        display: inline-flex
+        align-items: center
+        gap: 0.5rem
+        color: var(--secondary)
+        font-weight: 600
+        padding: 0
+        &:hover
+          gap: 1rem
+
+  // --- Process Section ---
+  .services-process
+    .process-grid
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+        gap: var(--spacing-20)
+
+    .process-header
+      position: relative
+      
+      .sticky-content
+        @media (min-width: 992px)
+          position: sticky
+          top: 10rem // Отступ от шапки при скролле
+
+    .process-steps
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-10)
+      @media (min-width: 768px)
+        gap: var(--spacing-16)
+
+    .step-item
+      display: flex
+      gap: var(--spacing-6)
+      
+      &:hover .step-number
+        background-color: var(--secondary)
+        color: #ffffff
+
+    .step-number
+      flex-shrink: 0
+      width: 3rem
+      height: 3rem
+      border-radius: 50%
+      border: 1px solid var(--secondary)
+      color: var(--secondary)
+      display: flex
+      align-items: center
+      justify-content: center
+      font-family: var(--font-heading)
+      font-size: 1.25rem
+      transition: all 0.3s ease
+
+    .step-content
+      p
+        margin-bottom: 0
+
+  // --- Final CTA Section ---
+  .services-cta
+    padding-bottom: var(--spacing-20)
+
+    .cta-card
+      position: relative
+      background-color: var(--primary)
+      border-radius: var(--radius-lg)
+      overflow: hidden
+      padding: var(--spacing-16) var(--spacing-6)
+      text-align: center
+      display: flex
+      flex-direction: column
+      align-items: center
+      
+      @media (min-width: 768px)
+        padding: var(--spacing-20) var(--spacing-10)
+
+      &__bg
+        position: absolute
+        inset: 0
+        opacity: 0.2
+        pointer-events: none
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+      &__content
+        position: relative
+        z-index: 10
+        max-width: 800px
+
+        .display-lg
+          margin-bottom: var(--spacing-6)
+        
+        p
+          font-size: 1.125rem
+          margin-bottom: var(--spacing-10)
+
+      .cta-actions
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-3)
+        justify-content: center
+        
+        @media (min-width: 600px)
+          flex-direction: row
+          gap: var(--spacing-6)
+
+      .btn-glass
+        background-color: rgba(255, 255, 255, 0.1)
+        backdrop-filter: blur(12px)
+        -webkit-backdrop-filter: blur(12px)
+        border: 1px solid rgba(255, 255, 255, 0.2)
+        color: #ffffff
+        padding: 0.75rem 1.5rem
+        border-radius: var(--radius-md)
+        font-family: var(--font-body)
+        font-weight: 500
+        cursor: pointer
+        transition: all 0.3s ease
+        
+        &:hover
+          background-color: rgba(255, 255, 255, 0.2)

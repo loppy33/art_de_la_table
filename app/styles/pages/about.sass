@@ -1,0 +1,371 @@
+.about
+  // Утилиты
+  .text-white
+    color: #ffffff
+  .text-gold
+    color: var(--secondary)
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .text-muted
+    color: var(--outline-variant)
+  .bg-surface
+    background-color: var(--surface)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .text-center
+    text-align: center
+  .max-w-xl
+    max-width: 600px
+  .block
+    display: block
+  .mt-4
+    margin-top: var(--spacing-3)
+  .mt-8
+    margin-top: var(--spacing-6)
+  .mt-10
+    margin-top: var(--spacing-10)
+  .mt-auto
+    margin-top: auto
+  .mb-4
+    margin-bottom: var(--spacing-3)
+  .mb-8
+    margin-bottom: var(--spacing-6)
+  
+  .label-gold-bg
+    background-color: rgba(119, 90, 25, 0.1) // --secondary 10%
+    border: 1px solid rgba(119, 90, 25, 0.3)
+    color: var(--secondary-container)
+    padding: 0.25rem 1rem
+    border-radius: 2rem
+    margin-bottom: var(--spacing-6)
+    display: inline-block
+
+  .icon-gold
+    color: var(--secondary)
+    font-size: 2rem
+    &.lg-icon
+      font-size: 3rem
+
+  // Общие отступы секций
+  section
+    padding: var(--spacing-16) 0
+    @media (min-width: 768px)
+      padding: var(--spacing-20) 0
+
+  // Заголовки (кастомные размеры для этой страницы)
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin-bottom: 0
+  
+  .display-sm
+    font-family: var(--font-heading)
+    font-size: 2.25rem
+    color: var(--primary)
+    line-height: 1.2
+
+  .text-lg
+    font-size: 1.125rem
+    color: var(--on-surface-variant)
+    line-height: 1.6
+
+  // --- Hero Section ---
+  .about-hero
+    position: relative
+    min-height: 80vh
+    display: flex
+    align-items: center
+    padding: 0 // Переопределяем padding
+
+    &__bg
+      position: absolute
+      inset: 0
+      z-index: 0
+      background-color: var(--primary)
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.8
+    
+    &__overlay
+      position: absolute
+      inset: 0
+      background: linear-gradient(to bottom, rgba(0, 12, 30, 0.8), rgba(0, 35, 68, 0.4))
+
+    &__content
+      position: relative
+      z-index: 10
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-20)
+      
+      .display-lg
+        margin-bottom: var(--spacing-6)
+
+    &__desc
+      font-size: 1.125rem
+      color: rgba(255, 255, 255, 0.8)
+      @media (min-width: 768px)
+        font-size: 1.25rem
+
+  // --- Missions Section ---
+  .about-missions
+    .missions-grid
+      display: grid
+      gap: var(--spacing-10)
+      @media (min-width: 992px)
+        grid-template-columns: 5fr 7fr
+        gap: var(--spacing-16)
+        align-items: start
+
+    .headline-lg
+      margin-bottom: var(--spacing-10)
+
+    .missions-list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-10)
+
+    .mission-item
+      &__header
+        display: flex
+        align-items: center
+        gap: var(--spacing-3)
+        margin-bottom: var(--spacing-3)
+
+    .missions-visual
+      .image-card
+        padding: 0.25rem // Имитация рамки за счет фона bg-low
+        border-radius: var(--radius-lg)
+        img
+          width: 100%
+          height: 400px
+          object-fit: cover
+          border-radius: var(--radius-md)
+          @media (min-width: 768px)
+            height: 600px
+
+  // --- Philosophy Section ---
+  .about-philosophy
+    .philosophy-header
+      margin-bottom: var(--spacing-16)
+      
+      .headline-lg
+        margin-bottom: var(--spacing-3)
+      
+      .decorative-dash
+        height: 4px
+        width: 60px
+        background-color: var(--secondary)
+        margin: 0 auto
+
+    .philosophy-bento
+      display: grid
+      gap: var(--spacing-6)
+      @media (min-width: 992px)
+        grid-template-columns: repeat(3, 1fr)
+
+    .bento-card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-10)
+      border-radius: var(--radius-lg)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      transition: box-shadow 0.3s ease
+      &:hover
+        box-shadow: var(--shadow-ambient)
+
+    .card-large
+      @media (min-width: 992px)
+        grid-column: span 2
+
+      .card-stats
+        display: flex
+        align-items: center
+        gap: var(--spacing-6)
+        margin-top: var(--spacing-10)
+        
+        .stat-item
+          display: flex
+          flex-direction: column
+          
+        .stat-number
+          font-family: var(--font-heading)
+          font-size: 2.5rem
+          color: var(--primary)
+          line-height: 1
+          
+        .stat-divider
+          width: 1px
+          height: 3rem
+          background-color: var(--outline-variant)
+          opacity: 0.3
+
+    .card-primary
+      background-color: var(--primary)
+      
+      .headline-md
+        margin-top: var(--spacing-6)
+        margin-bottom: var(--spacing-3)
+
+  // --- Expertise Section ---
+  .about-expertise
+    .expertise-grid
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+        align-items: center
+
+    .expertise-visual
+      position: relative
+      
+      img
+        width: 100%
+        border-radius: var(--radius-lg)
+        aspect-ratio: 4 / 5
+        object-fit: cover
+        position: relative
+        z-index: 2
+
+      .blur-blob
+        position: absolute
+        top: -2rem
+        left: -2rem
+        width: 10rem
+        height: 10rem
+        background-color: rgba(254, 212, 136, 0.2) // secondary-container 20%
+        border-radius: 50%
+        filter: blur(2rem)
+        z-index: 1
+        @media (min-width: 768px)
+          width: 12rem
+          height: 12rem
+          filter: blur(3rem)
+
+      .floating-quote
+        position: absolute
+        bottom: -2rem
+        right: -1rem
+        background-color: var(--surface-container-lowest)
+        padding: var(--spacing-6)
+        border-radius: var(--radius-md)
+        z-index: 10
+        max-width: 250px
+        
+        p
+          font-family: var(--font-heading)
+          font-style: italic
+          color: var(--primary)
+          margin: 0
+          font-size: 1.125rem
+
+    .expertise-text
+      .headline-lg
+        margin-bottom: var(--spacing-6)
+
+      .expertise-list
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-6)
+        
+        li
+          display: flex
+          align-items: flex-start
+          gap: var(--spacing-3)
+          
+          .icon-gold
+            font-size: 1.5rem
+            margin-top: 0.2rem
+            
+          strong
+            display: block
+            font-family: var(--font-body)
+            color: var(--primary)
+            font-weight: 700
+            margin-bottom: 0.25rem
+            
+          p
+            margin: 0
+            font-size: 0.875rem
+            color: var(--on-surface-variant)
+
+  // --- Partners Section ---
+  .about-partners
+    .partners-header
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+      margin-bottom: var(--spacing-10)
+      
+      @media (min-width: 768px)
+        flex-direction: row
+        justify-content: space-between
+        align-items: flex-end
+        margin-bottom: var(--spacing-16)
+        
+      .headline-lg
+        margin-bottom: var(--spacing-3)
+
+      .link-with-arrow
+        display: inline-flex
+        align-items: center
+        gap: 0.5rem
+        color: var(--secondary)
+        font-weight: 700
+        text-transform: uppercase
+        font-size: var(--text-label-md)
+        letter-spacing: 0.1em
+        padding: 0
+        &:hover
+          gap: 1rem
+
+    .partners-grid
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: var(--spacing-3)
+      
+      @media (min-width: 768px)
+        grid-template-columns: repeat(4, 1fr)
+        gap: var(--spacing-6)
+
+    .partner-card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-6)
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: var(--radius-md)
+      text-align: center
+      transition: transform 0.3s ease
+      
+      &:hover
+        transform: translateY(-5px)
+
+      .headline-md
+        font-size: 1.125rem
+        @media (min-width: 768px)
+          font-size: 1.25rem
+
+  // --- CTA Section ---
+  .about-cta
+    border-top: 1px solid var(--surface-container-low)
+    
+    .cta-actions
+      display: flex
+      flex-direction: column
+      justify-content: center
+      gap: var(--spacing-3)
+      
+      @media (min-width: 600px)
+        flex-direction: row
+        gap: var(--spacing-6)
+
+      button
+        width: 100%
+        @media (min-width: 600px)
+          width: auto
+          padding-left: 3rem
+          padding-right: 3rem
