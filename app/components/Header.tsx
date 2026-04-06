@@ -32,7 +32,7 @@ export default function Header() {
 
         <div className="header__actions">
           <Link href="/contact" className="btn-text">Contact</Link>
-          <Link href="#" className="btn-primary">Prendre RDV</Link>
+          <Link href="/rendez-vous" className="btn-primary">Prendre RDV</Link>
         </div>
       </nav>
     </header>

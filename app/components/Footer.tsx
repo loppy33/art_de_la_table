@@ -13,9 +13,9 @@ export default function Footer() {
           <h4 className="label-md">Menu</h4>
           <ul>
             <li><Link href="/">Accueil</Link></li>
-            <li><Link href="#services">Nos services</Link></li>
-            <li><Link href="#selection">Sélection</Link></li>
-            <li><Link href="#about">À propos</Link></li>
+            <li><Link href="/services">Nos services</Link></li>
+            <li><Link href="/selection">Sélection</Link></li>
+            <li><Link href="/about">À propos</Link></li>
           </ul>
         </div>
 
@@ -24,7 +24,7 @@ export default function Footer() {
           <ul>
             <li><Link href="/contact">Contact</Link></li>
             <li><Link href="/cgv">CGV</Link></li>
-            <li><Link href="/rgpd">RGPD</Link></li>
+            <li><Link href="/privacy">RGPD</Link></li>
             <li><Link href="/mentions">Mentions Légales</Link></li>
           </ul>
         </div>

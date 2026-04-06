@@ -1,0 +1,287 @@
+.privacy
+  padding-top: var(--spacing-16)
+  padding-bottom: var(--spacing-20)
+  scroll-behavior: smooth
+
+  // Базовые утилиты
+  .text-white
+    color: #ffffff
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .text-muted
+    color: var(--on-surface-variant)
+  .text-primary
+    color: var(--primary)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .block
+    display: block
+  .mb-4
+    margin-bottom: var(--spacing-3)
+  .mb-6
+    margin-bottom: var(--spacing-6)
+  .mb-8
+    margin-bottom: var(--spacing-8)
+  .mb-10
+    margin-bottom: var(--spacing-10)
+  .mt-8
+    margin-top: var(--spacing-6)
+
+  .label-gold
+    color: var(--secondary)
+    margin-bottom: var(--spacing-3)
+    display: block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.625rem
+    text-transform: uppercase
+    letter-spacing: 0.15em
+
+  .icon-gold
+    color: var(--secondary)
+    &.lg-icon
+      font-size: 2rem
+      display: inline-block
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    color: var(--primary)
+    margin-bottom: 0.5rem
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 2rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-6)
+
+  .text-body
+    color: var(--on-surface-variant)
+    font-size: 1.125rem
+    line-height: 1.8
+    p
+      margin-bottom: var(--spacing-3)
+      &:last-child
+        margin-bottom: 0
+
+  .accented-left
+    border-left: 3px solid var(--secondary)
+    padding-left: var(--spacing-6)
+
+  .border-top
+    border-top: 1px solid rgba(195, 198, 207, 0.3) // outline-variant
+
+  .hidden-mobile
+    @media (max-width: 767px)
+      display: none
+
+  // --- Hero Section ---
+  .privacy-hero
+    margin-bottom: var(--spacing-16)
+    max-width: 800px
+    
+    .display-lg
+      margin-bottom: var(--spacing-6)
+      font-size: 2.5rem
+      @media (min-width: 768px)
+        font-size: 3.5rem
+
+    .hero-desc
+      color: var(--on-surface-variant)
+      font-size: 1.125rem
+      line-height: 1.6
+      font-style: italic
+      margin: 0
+
+  // --- Layout & Sidebar ---
+  .privacy-layout
+    display: grid
+    gap: var(--spacing-10)
+    
+    @media (min-width: 768px)
+      grid-template-columns: 3fr 9fr
+      gap: var(--spacing-16)
+
+  .privacy-sidebar
+    height: 100%
+
+    .sidebar-sticky
+      @media (min-width: 768px)
+        position: sticky
+        top: 8rem
+
+    .toc-nav
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-3)
+      
+      a
+        font-family: var(--font-body)
+        font-size: 0.875rem
+        font-weight: 500
+        color: var(--on-surface-variant)
+        transition: all 0.3s ease
+        padding-left: 0
+        
+        &:hover
+          color: var(--secondary)
+          padding-left: 0.5rem
+
+  // --- Content Areas ---
+  .privacy-content
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-16)
+
+  .privacy-section
+    scroll-margin-top: 100px // Плавный скролл с отступом
+
+    &.p-10
+      padding: var(--spacing-6)
+      @media (min-width: 768px)
+        padding: var(--spacing-10)
+
+    &.pt-16
+      padding-top: var(--spacing-16)
+
+  // Section 02: Collecte Grid
+  .cards-grid-2
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-6)
+    @media (min-width: 600px)
+      grid-template-columns: 1fr 1fr
+
+  .data-card
+    background-color: var(--surface-container-lowest)
+    padding: var(--spacing-6)
+    border-radius: var(--radius-md)
+    transition: box-shadow 0.3s ease
+    
+    &:hover
+      box-shadow: var(--shadow-ambient)
+
+    p
+      font-size: 0.875rem
+      color: var(--on-surface-variant)
+      margin: 0
+
+  // Section 03: Custom Checklist
+  .custom-checklist
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-6)
+
+    li
+      display: flex
+      align-items: flex-start
+      gap: var(--spacing-4)
+
+    .icon-wrapper
+      flex-shrink: 0
+      width: 2rem
+      height: 2rem
+      margin-right: 1rem
+      border-radius: 50%
+      background-color: rgba(119, 90, 25, 0.1) // secondary 10%
+      display: flex
+      align-items: center
+      justify-content: center
+      
+      span
+        color: var(--secondary)
+        font-size: 1rem
+
+    p
+      font-size: 0.875rem
+      color: var(--on-surface-variant)
+      margin: 0
+
+  // Section 04: Rights Grid
+  .rights-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-4)
+    @media (min-width: 600px)
+      grid-template-columns: 1fr 1fr
+
+  .right-card
+    background-color: var(--surface-container-lowest)
+    padding: var(--spacing-6)
+    border-radius: var(--radius-md)
+    
+    p
+      font-size: 0.75rem
+      color: var(--on-surface-variant)
+      margin: 0
+
+  // Section 05: Cookies Block (Dark Glassmorphism)
+  .cookies-block
+    position: relative
+    background-color: var(--primary)
+    border-radius: var(--radius-lg)
+    padding: var(--spacing-10)
+    overflow: hidden
+    box-shadow: var(--shadow-floating)
+    
+    @media (min-width: 768px)
+      padding: var(--spacing-16)
+
+    &__content
+      position: relative
+      z-index: 10
+      max-width: 600px
+
+      h2
+        color: var(--secondary)
+
+      p
+        font-size: 1.125rem
+        line-height: 1.6
+        margin: 0
+
+    .blur-blob
+      position: absolute
+      right: -5rem
+      bottom: -5rem
+      width: 16rem
+      height: 16rem
+      background-color: var(--secondary)
+      border-radius: 50%
+      filter: blur(4rem)
+      opacity: 0.2
+      z-index: 1
+
+  // Section 06: DPO Card
+  .dpo-card
+    padding: var(--spacing-8)
+    border-radius: var(--radius-md)
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-6)
+    
+    @media (min-width: 768px)
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+
+    .dpo-email
+      font-family: var(--font-heading)
+      font-size: 1.5rem
+      font-weight: 700
+      color: var(--primary)
+      margin: 0
+
+    &__address
+      text-align: left
+      @media (min-width: 768px)
+        text-align: right
+        
+      p
+        font-size: 0.75rem
+        color: var(--on-surface-variant)
+        margin: 0

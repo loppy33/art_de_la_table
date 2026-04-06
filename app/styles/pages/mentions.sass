@@ -1,0 +1,161 @@
+.legal-notices
+  padding-bottom: var(--spacing-20)
+  scroll-behavior: smooth
+
+  // Базовые утилиты для страницы
+  .text-muted
+    color: var(--on-surface-variant)
+  .text-gold
+    color: var(--secondary)
+  .bg-low
+    background-color: var(--surface-container-low)
+
+  .label-gold
+    color: var(--secondary)
+    margin-bottom: var(--spacing-3)
+    display: block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.625rem
+    text-transform: uppercase
+    letter-spacing: 0.15em
+    margin-bottom: 0.25rem
+    display: block
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-3)
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 2rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-6)
+
+  .link-underline
+    color: var(--secondary)
+    text-decoration: underline
+    text-decoration-color: rgba(119, 90, 25, 0.3) // secondary 30%
+    text-underline-offset: 4px
+    transition: text-decoration-color 0.3s ease
+    &:hover
+      text-decoration-color: var(--secondary)
+
+  // --- Hero Section ---
+  .legal-hero
+    padding-top: var(--spacing-16)
+    padding-bottom: var(--spacing-10)
+    
+    @media (min-width: 768px)
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-16)
+
+    .display-lg
+      margin-bottom: var(--spacing-6)
+
+    .decorative-line
+      width: 6rem
+      height: 1px
+      background-color: var(--secondary)
+      opacity: 0.3
+
+  // --- Grid Layout ---
+  .legal-grid
+    display: grid
+    gap: var(--spacing-10)
+    
+    @media (min-width: 992px)
+      grid-template-columns: 4fr 8fr
+      gap: var(--spacing-16)
+    //   align-items: flex-start // Важно для sticky сайдбара
+
+  // --- Sidebar ---
+  .legal-sidebar
+    height: 100%
+    .sidebar-sticky
+      @media (min-width: 992px)
+        position: sticky
+        top: 8rem // Отступ от шапки
+
+    .update-card
+      padding: var(--spacing-6)
+      border-radius: var(--radius-md)
+      border-left: 2px solid rgba(119, 90, 25, 0.2) // Легкий золотой акцент
+      margin-bottom: var(--spacing-10)
+      
+      h3
+        margin-bottom: 0.5rem
+      p
+        margin: 0
+        font-size: 0.875rem
+
+    .toc-nav
+      .headline-sm
+        padding-bottom: 0.5rem
+        border-bottom: 1px solid rgba(195, 198, 207, 0.2) // ghost-border
+        margin-bottom: var(--spacing-6)
+
+    .toc-list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-3)
+      
+      a
+        font-family: var(--font-body)
+        font-size: 0.75rem
+        text-transform: uppercase
+        letter-spacing: 0.15em
+        color: var(--on-surface-variant)
+        transition: color 0.3s ease
+        
+        &:hover
+          color: var(--secondary)
+
+  // --- Main Content ---
+  .legal-content
+    .legal-section
+      margin-bottom: var(--spacing-16)
+      
+      &:last-child
+        margin-bottom: 0
+
+      p
+        color: var(--on-surface-variant)
+        font-size: 1.125rem
+        line-height: 1.8
+        margin-bottom: var(--spacing-6)
+        
+        strong
+          color: var(--on-background)
+          font-weight: 600
+
+  // Identity Bento Card
+  .identity-card
+    background-color: var(--surface-container-lowest)
+    padding: var(--spacing-6)
+    border-radius: var(--radius-md)
+    margin-top: var(--spacing-6)
+    
+    @media (min-width: 768px)
+      padding: var(--spacing-10)
+
+    .identity-grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      
+      @media (min-width: 600px)
+        grid-template-columns: 1fr 1fr
+
+    .identity-item
+      p
+        font-size: 0.875rem
+        color: var(--on-background)
+        margin: 0
+        line-height: 1.4

@@ -1,0 +1,350 @@
+.cgv
+  padding-top: var(--spacing-16)
+  padding-bottom: var(--spacing-20)
+  scroll-behavior: smooth // Если не добавлено глобально
+
+  // Базовые утилиты
+  .text-gold
+    color: var(--secondary)
+  .text-muted
+    color: var(--on-surface-variant)
+  .text-white
+    color: #ffffff
+  .bg-low
+    background-color: var(--surface-container-low)
+  .block
+    display: block
+  .mb-4
+    margin-bottom: var(--spacing-3)
+  .mb-6
+    margin-bottom: var(--spacing-6)
+  
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.625rem
+    text-transform: uppercase
+    letter-spacing: 0.15em
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin: 0
+
+  .headline-xs
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    color: var(--primary)
+    margin: 0
+
+  .icon-gold
+    color: var(--secondary)
+    font-size: 1.25rem
+
+  .rounded-xl
+    border-radius: var(--radius-xl, 0.75rem)
+  .rounded-lg
+    border-radius: var(--radius-lg)
+
+  .hidden-mobile
+    @media (max-width: 991px)
+      display: none
+
+  // --- Hero Section ---
+  .cgv-hero
+    margin-bottom: var(--spacing-16)
+    max-width: 800px
+    text-align: center
+    margin-left: auto
+    margin-right: auto
+    
+    @media (min-width: 768px)
+      text-align: left
+      margin-left: 0
+
+    .badge-outline
+      display: inline-block
+      padding: 0.25rem 1rem
+      border: var(--border-ghost)
+      border-radius: 2rem
+      margin-bottom: var(--spacing-6)
+
+    .display-lg
+      margin-bottom: var(--spacing-3)
+      font-size: 2.5rem
+      @media (min-width: 768px)
+        font-size: 3.5rem
+
+    .hero-desc
+      color: var(--on-surface-variant)
+      font-size: 1.125rem
+      line-height: 1.6
+      margin-bottom: var(--spacing-6)
+
+    .decorative-dash
+      height: 4px
+      width: 60px
+      background-color: var(--secondary)
+      margin: 0 auto
+      @media (min-width: 768px)
+        margin: 0
+
+  // --- Grid Layout ---
+  .cgv-grid
+    display: grid
+    gap: var(--spacing-10)
+    
+    @media (min-width: 992px)
+      grid-template-columns: 3fr 9fr // Сайдбар ýже, чем в Mentions
+      gap: var(--spacing-16)
+
+  // --- Sidebar ---
+  .cgv-sidebar
+    height: 100%
+
+    .sidebar-sticky
+      @media (min-width: 992px)
+        position: sticky
+        top: 8rem
+
+    .toc-nav
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-3)
+      
+      a
+        font-family: var(--font-body)
+        font-size: 0.875rem
+        color: var(--on-surface-variant)
+        transition: all 0.3s ease
+        padding-left: 0
+        
+        &:hover
+          color: var(--secondary)
+          padding-left: 0.5rem // Эффект отступа при наведении
+
+  // --- Main Content Clauses ---
+  .cgv-content
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-16)
+
+  .clause-section
+    scroll-margin-top: 100px // Для плавного скролла
+
+    &.bg-low
+      padding: var(--spacing-8)
+      @media (min-width: 768px)
+        padding: var(--spacing-12)
+        
+    &.p-6
+      padding: var(--spacing-6)
+
+    &.accented-left
+      border-left: 4px solid var(--secondary)
+      padding-left: var(--spacing-6)
+
+    &.border-top
+      padding-top: var(--spacing-10)
+      border-top: 1px solid rgba(195, 198, 207, 0.3) // outline-variant
+
+    .clause-header
+      display: flex
+      align-items: center
+      gap: var(--spacing-3)
+      margin-bottom: var(--spacing-6)
+      
+      &.mb-4
+        margin-bottom: var(--spacing-3)
+
+    .clause-number
+      font-family: var(--font-heading)
+      font-size: 2rem
+      font-style: italic
+      color: var(--outline-variant) // Серый приглушенный
+      line-height: 1
+      
+      &.text-2xl
+        font-size: 1.5rem
+
+    .clause-body
+      p
+        color: var(--on-surface-variant)
+        font-size: 0.9375rem
+        line-height: 1.7
+        margin-bottom: var(--spacing-3)
+        &:last-child
+          margin-bottom: 0
+
+  // Grid for cards inside clauses
+  .cards-grid-2
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-6)
+    @media (min-width: 768px)
+      grid-template-columns: 1fr 1fr
+
+  .clause-card
+    background-color: var(--surface-container-lowest)
+    padding: var(--spacing-6)
+    border-radius: var(--radius-md)
+    transition: box-shadow 0.3s ease
+    
+    &:hover
+      box-shadow: var(--shadow-ambient)
+
+    .card-title
+      font-family: var(--font-body)
+      font-weight: 700
+      color: var(--secondary)
+      display: flex
+      align-items: center
+      gap: 0.5rem
+      margin-bottom: var(--spacing-3)
+      
+      span
+        font-size: 1.25rem
+
+    p
+      font-size: 0.875rem
+      color: var(--on-surface-variant)
+      margin: 0
+
+  // Article 04: Dark Block
+  .dark-block
+    background-color: var(--primary)
+    color: var(--on-secondary)
+    padding: var(--spacing-8)
+    border-radius: var(--radius-lg)
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-8)
+    
+    @media (min-width: 768px)
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+
+    &__text
+      flex: 1
+      
+      .headline-sm
+        margin-bottom: var(--spacing-6)
+        color: var(--on-secondary)
+
+
+      .check-list
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-3)
+        opacity: 0.8
+        
+        li
+          display: flex
+          align-items: flex-start
+          gap: 0.5rem
+          font-size: 0.875rem
+          
+          .icon-gold
+            font-size: 1.125rem
+            margin-top: 2px
+
+    &__fine
+      width: 100%
+      aspect-ratio: 16 / 9
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      text-align: center
+      padding: var(--spacing-6)
+      border-radius: var(--radius-md)
+      
+      @media (min-width: 768px)
+        width: 250px
+
+      .fine-amount
+        font-family: var(--font-body)
+        font-size: 2rem
+        font-weight: 700
+        display: block
+      
+      .fine-label
+        font-size: 0.625rem
+        text-transform: uppercase
+        letter-spacing: -0.02em
+        opacity: 0.6
+
+  // Article 05 & 06 Asymmetric layout
+  .cards-grid-asymmetric
+    display: grid
+    grid-template-columns: 1fr
+    gap: var(--spacing-10)
+    
+    @media (min-width: 768px)
+      grid-template-columns: 3fr 2fr
+
+  .guarantee-box
+    padding-top: var(--spacing-3)
+    border-top: 1px solid rgba(195, 198, 207, 0.3) // outline-variant
+
+    strong
+      font-size: 0.875rem
+      color: var(--primary)
+
+  // Section 07 Buttons
+  .flex-between
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-6)
+    
+    @media (min-width: 768px)
+      flex-direction: row
+      justify-content: space-between
+      align-items: flex-end
+
+    .max-w-xl
+      max-width: 600px
+
+  .action-buttons
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-3)
+
+  .btn-secondary-light
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 0.5rem
+    background-color: rgba(119, 90, 25, 0.1) // secondary 10%
+    color: var(--secondary)
+    padding: 0.75rem 1.5rem
+    border-radius: var(--radius-md)
+    font-family: var(--font-body)
+    font-weight: 700
+    font-size: 0.875rem
+    cursor: pointer
+    transition: background-color 0.3s ease
+    border: none
+    
+    &:hover
+      background-color: rgba(119, 90, 25, 0.2)
+
+  .btn-outline
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 0.5rem
+    background-color: transparent
+    border: 1px solid rgba(195, 198, 207, 0.5) // outline-variant 50%
+    color: var(--primary)
+    padding: 0.75rem 1.5rem
+    border-radius: var(--radius-md)
+    font-family: var(--font-body)
+    font-weight: 700
+    font-size: 0.875rem
+    cursor: pointer
+    transition: background-color 0.3s ease
+    
+    &:hover
+      background-color: var(--surface-container-high)

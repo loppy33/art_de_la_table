@@ -1,0 +1,269 @@
+.booking
+  // Базовые утилиты
+  .text-secondary
+    color: var(--secondary)
+  .text-primary
+    color: var(--primary)
+  .text-muted
+    color: var(--on-surface-variant)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .italic
+    font-style: italic
+  .block
+    display: block
+  .mb-6
+    margin-bottom: var(--spacing-6)
+  .mb-8
+    margin-bottom: var(--spacing-6) // Используем 6 или 10
+  .mb-10
+    margin-bottom: var(--spacing-10)
+  .mt-4
+    margin-top: var(--spacing-3)
+  .max-w-md
+    max-width: 450px
+  .mx-auto
+    margin-left: auto
+    margin-right: auto
+  .text-center
+    text-align: center
+
+  .label-gold
+    color: var(--secondary)
+    margin-bottom: var(--spacing-6)
+    display: inline-block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.625rem
+    text-transform: uppercase
+    letter-spacing: 0.2em
+
+  .icon-gold
+    color: var(--secondary)
+    &.lg-icon
+      font-size: 2.5rem
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-3)
+
+  // --- Hero Section ---
+  .booking-hero
+    padding-top: var(--spacing-16)
+    padding-bottom: var(--spacing-10)
+    
+    @media (min-width: 768px)
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-16)
+
+    &__content
+      max-width: 800px
+      
+      .display-lg
+        margin-bottom: var(--spacing-6)
+
+      .hero-desc
+        font-size: 1.125rem
+        color: var(--on-surface-variant)
+        max-width: 600px
+        padding-left: var(--spacing-6)
+        border-left: 1px solid rgba(119, 90, 25, 0.3) // Тонкая золотистая линия (secondary)
+        margin: 0
+        @media (min-width: 768px)
+          font-size: 1.25rem
+
+  // --- Info Grid (Process & Benefits) ---
+  .booking-info
+    padding-bottom: var(--spacing-20)
+
+    .info-grid
+      display: grid
+      gap: var(--spacing-6)
+      @media (min-width: 992px)
+        grid-template-columns: repeat(3, 1fr)
+        gap: var(--spacing-10)
+
+    .info-card
+      padding: var(--spacing-10)
+      border-radius: var(--radius-lg)
+      transition: background-color 0.3s ease
+      
+      &:hover
+        background-color: var(--surface-container) // Лёгкое изменение фона
+
+      p
+        color: var(--on-surface-variant)
+        margin: 0
+        font-size: 0.875rem
+
+    .process-card
+      padding: var(--spacing-10)
+      
+      .process-list
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-6)
+        
+        li
+          display: flex
+          align-items: flex-start
+          gap: var(--spacing-6)
+
+        .step-num
+          font-family: var(--font-heading)
+          font-size: 1.5rem
+          color: rgba(0, 12, 30, 0.2) // primary with opacity
+          font-weight: 700
+          line-height: 1
+          margin-top: 0.125rem
+
+        h4
+          margin-bottom: 0.25rem
+          
+        p
+          margin: 0
+          font-size: 0.875rem
+          color: var(--on-surface-variant)
+
+  // --- Booking Widget Section ---
+  .booking-widget-section
+    padding-bottom: var(--spacing-20)
+
+    .widget-header
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+      padding-bottom: var(--spacing-6)
+      border-bottom: var(--border-ghost)
+      margin-bottom: 0 // Фон виджета будет вплотную
+      
+      @media (min-width: 768px)
+        flex-direction: row
+        justify-content: space-between
+        align-items: flex-end
+
+      .headline-lg
+        margin-bottom: var(--spacing-3)
+      p
+        margin: 0
+
+    .availability-badge
+      display: inline-flex
+      align-items: center
+      gap: 0.5rem
+      padding: 0.5rem 0
+      
+      .status-dot
+        width: 6px
+        height: 6px
+        border-radius: 50%
+        background-color: #10b981 // emerald-500
+        
+      .pulse-green
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4)
+        animation: pulse 2s infinite
+
+    // Контейнер виджета
+    .widget-container
+      padding: var(--spacing-6)
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg)
+      display: flex
+      align-items: center
+      justify-content: center
+      min-height: 600px
+      
+      @media (min-width: 768px)
+        padding: var(--spacing-16)
+
+    .widget-box
+      position: relative
+      background-color: var(--surface-container-lowest)
+      width: 100%
+      max-width: 900px
+      min-height: 400px
+      border-radius: var(--radius-lg)
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      text-align: center
+      padding: var(--spacing-10)
+      overflow: hidden
+
+    .widget-bg-pattern
+      position: absolute
+      inset: 0
+      opacity: 0.03
+      pointer-events: none
+      background-image: radial-gradient(var(--primary) 1px, transparent 1px)
+      background-size: 24px 24px
+
+    .widget-content
+      position: relative
+      z-index: 10
+      display: flex
+      flex-direction: column
+      align-items: center
+
+      .opacity-30
+        opacity: 0.3
+
+    // Анимация загрузки
+    .loading-bar
+      width: 200px
+      height: 1px
+      background-color: rgba(0, 12, 30, 0.1) // primary 10%
+      position: relative
+      overflow: hidden
+      
+      &__inner
+        position: absolute
+        inset: 0
+        width: 30%
+        background-color: var(--primary)
+        animation: slide-loading 2s infinite linear
+
+  // --- Trust Section ---
+  .booking-trust
+    padding-bottom: var(--spacing-20)
+    
+    .trust-logos
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      align-items: center
+      gap: var(--spacing-10)
+      opacity: 0.3
+      transition: opacity 0.5s ease
+      
+      &:hover
+        opacity: 0.6
+        
+      @media (min-width: 768px)
+        gap: var(--spacing-20)
+
+      span
+        font-family: var(--font-heading)
+        font-size: 1.25rem
+        letter-spacing: -0.02em
+
+// Анимации
+@keyframes pulse
+  0%
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4)
+  70%
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0)
+  100%
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0)
+
+@keyframes slide-loading
+  0%
+    transform: translateX(-100%)
+  100%
+    transform: translateX(350%)
