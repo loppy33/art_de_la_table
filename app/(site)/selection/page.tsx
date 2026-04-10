@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Selection() {
   return (
     <main className="selection">
@@ -137,7 +139,7 @@ export default function Selection() {
               <span className="label-md label-gold">Le Détail Subtil</span>
               <h2 className="display-sm">Décoration & <br />Centres de Table</h2>
               <p>Bougeoirs en bronze, vases en cristal et sculptures de table pour parfaire l'atmosphère de vos réceptions.</p>
-              <button className="btn-secondary">Explorer la galerie</button>
+              <Link href="/contact" className="btn-secondary">Nous contacter</Link>
             </div>
             <div className="feature-image">
               <img 
