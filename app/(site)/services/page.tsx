@@ -100,10 +100,6 @@ export default function Services() {
               <div className="bento-card__content">
                 <h3 className="headline-md">Expertise Technique</h3>
                 <p>Recommandations basées sur la durabilité des matériaux et leur résistance aux cycles de lavage intensifs du secteur CHR. Alliez élégance et rentabilité opérationnelle.</p>
-                <button className="btn-text link-with-arrow mt-auto">
-                  Découvrir nos protocoles 
-                  <span className="material-symbols-outlined">arrow_right_alt</span>
-                </button>
               </div>
             </div>
           </div>
