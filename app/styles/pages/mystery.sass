@@ -1,0 +1,470 @@
+.mystery-shopper
+  padding-bottom: var(--spacing-20)
+  scroll-behavior: smooth
+
+  // Базовые утилиты
+  .text-white
+    color: #ffffff
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .text-muted
+    color: var(--on-surface-variant)
+  .text-gold
+    color: var(--secondary)
+  .text-gold-dark
+    color: var(--on-secondary-fixed-variant)
+  .bg-primary
+    background-color: var(--primary)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .bg-surface
+    background-color: var(--surface-container-lowest)
+  .bg-gold-light
+    background-color: rgba(119, 90, 25, 0.1) // secondary / 10%
+    
+  .italic
+    font-style: italic
+  .block
+    display: block
+  .text-center
+    text-align: center
+  .relative-z
+    position: relative
+    z-index: 10
+  .mt-auto
+    margin-top: auto
+
+  .max-w-xl
+    max-width: 600px
+  .mx-auto
+    margin-left: auto
+    margin-right: auto
+  .mb-4
+    margin-bottom: var(--spacing-3)
+  .mb-6
+    margin-bottom: var(--spacing-6)
+  .mb-10
+    margin-bottom: var(--spacing-10)
+  .mb-12
+    margin-bottom: var(--spacing-12, 3rem)
+  .mb-16
+    margin-bottom: var(--spacing-16)
+
+  // Типографика
+  .label-gold
+    color: var(--secondary)
+    display: block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+    margin-bottom: var(--spacing-3)
+
+  .label-gold-outline
+    display: inline-block
+    color: var(--secondary-container)
+    border: 1px solid rgba(254, 212, 136, 0.3) // secondary-container
+    padding: 0.25rem 1rem
+    border-radius: 2rem
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+    margin-bottom: var(--spacing-6)
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    color: var(--primary)
+    margin-bottom: 0.5rem
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    margin-bottom: var(--spacing-3)
+
+  .display-sm
+    font-family: var(--font-heading)
+    font-size: 2.25rem
+    color: var(--primary)
+    line-height: 1.2
+
+  .display-lg
+    font-family: var(--font-heading)
+    font-size: 3rem
+    line-height: 1.1
+    margin-bottom: var(--spacing-6)
+    @media (min-width: 768px)
+      font-size: 4rem
+
+  .text-body
+    color: var(--on-surface-variant)
+    font-size: 1.125rem
+    line-height: 1.8
+
+  .text-sm
+    font-size: 0.875rem
+    line-height: 1.6
+
+  .icon-gold
+    color: var(--secondary)
+    font-size: 1.5rem
+    &.lg-icon
+      font-size: 2.5rem
+
+  // Отступы секций
+  section
+    padding-top: var(--spacing-16)
+    padding-bottom: var(--spacing-16)
+    @media (min-width: 768px)
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-20)
+
+  // --- Hero Section ---
+  .mystery-hero
+    position: relative
+    min-height: 85vh
+    display: flex
+    align-items: center
+    padding: 0
+
+    &__bg
+      position: absolute
+      inset: 0
+      z-index: 0
+      background-color: var(--primary)
+      
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.4
+    
+    &__overlay
+      position: absolute
+      inset: 0
+      background: linear-gradient(to right, var(--primary) 0%, rgba(0, 12, 30, 0.8) 50%, transparent 100%)
+
+    &__content
+      position: relative
+      z-index: 10
+      width: 100%
+      
+      .hero-text-block
+        max-width: 700px
+        
+      .hero-subtitle
+        font-size: 1.25rem
+        color: var(--primary-fixed-dim)
+        margin-bottom: var(--spacing-10)
+        @media (min-width: 768px)
+          font-size: 1.5rem
+
+      .hero-actions
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-4)
+        @media (min-width: 500px)
+          flex-direction: row
+
+      .btn-secondary-outline
+        background: transparent
+        border: 1px solid rgba(119, 90, 25, 0.4) // secondary 40%
+        color: var(--secondary-container)
+        padding: 0.75rem 1.5rem
+        border-radius: var(--radius-md)
+        font-family: var(--font-body)
+        font-weight: 600
+        text-transform: uppercase
+        letter-spacing: 0.1em
+        cursor: pointer
+        transition: background-color 0.3s ease
+        &:hover
+          background-color: rgba(119, 90, 25, 0.1)
+
+  // --- Intro Section ---
+  .mystery-intro
+    .intro-grid
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+        align-items: start
+
+    .intro-cards
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      @media (min-width: 600px)
+        grid-template-columns: 1fr 1fr
+
+    .feature-card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-8)
+      border-radius: var(--radius-lg)
+      
+      p
+        font-size: 0.875rem
+        color: var(--on-surface-variant)
+        margin: 0
+
+    .mt-offset
+      @media (min-width: 600px)
+        margin-top: var(--spacing-10)
+
+  // --- Focus Areas (Bento Grid) ---
+  .mystery-focus
+    .bento-grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      
+      @media (min-width: 768px)
+        grid-template-columns: repeat(4, 1fr)
+        grid-auto-rows: minmax(200px, auto)
+
+    .bento-card
+      border-radius: var(--radius-lg)
+      padding: var(--spacing-8)
+      display: flex
+      flex-direction: column
+      position: relative
+      overflow: hidden
+
+    .card-large
+      @media (min-width: 768px)
+        grid-column: span 2
+        grid-row: span 2
+      
+      padding: var(--spacing-10)
+      justify-content: flex-end
+      
+      .card-bg-img
+        position: absolute
+        inset: 0
+        width: 100%
+        height: 100%
+        object-fit: cover
+        transition: transform 0.7s ease
+        
+      &:hover .card-bg-img
+        transform: scale(1.05)
+        
+      .card-overlay
+        position: absolute
+        inset: 0
+        background: linear-gradient(to top, rgba(0, 12, 30, 0.9) 0%, transparent 60%)
+
+      .card-content p
+        margin: 0
+
+    .card-wide
+      display: flex
+      flex-direction: row
+      align-items: center
+      justify-content: space-between
+      
+      @media (min-width: 768px)
+        grid-column: span 2
+
+      .wide-content
+        max-width: 250px
+        p
+          margin: 0
+
+      .bg-icon
+        font-size: 5rem
+        color: var(--secondary)
+        opacity: 0.2
+
+  // --- Method Section ---
+  .mystery-method
+    .method-header
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+      margin-bottom: var(--spacing-16)
+      
+      @media (min-width: 768px)
+        flex-direction: row
+        align-items: flex-end
+        justify-content: space-between
+        
+      .decorative-line
+        display: none
+        @media (min-width: 768px)
+          display: block
+          flex-grow: 1
+          height: 1px
+          background-color: var(--outline-variant)
+          opacity: 0.3
+          margin: 0 var(--spacing-10) 0.5rem
+
+    .steps-grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-10)
+      
+      @media (min-width: 600px)
+        grid-template-columns: repeat(2, 1fr)
+      @media (min-width: 992px)
+        grid-template-columns: repeat(5, 1fr)
+        gap: var(--spacing-6)
+
+    .step-item
+      position: relative
+      padding-top: var(--spacing-6) // Место под цифру
+
+      .step-bg-number
+        position: absolute
+        top: -1rem
+        left: -1rem
+        font-family: var(--font-heading)
+        font-size: 4rem
+        line-height: 1
+        color: var(--secondary)
+        opacity: 0.1
+        user-select: none
+
+      p
+        margin: 0
+
+  // --- Why Choose Us (Dark Asymmetric) ---
+  .mystery-why
+    .why-grid
+      display: grid
+      gap: var(--spacing-16)
+      
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+        align-items: center
+        gap: var(--spacing-20)
+
+    .why-visual
+      position: relative
+      padding: var(--spacing-6) 
+      
+      .image-decorator
+        position: relative
+        border-radius: var(--radius-lg)
+        z-index: 10
+        
+        img
+          width: 100%
+          border-radius: var(--radius-lg)
+          box-shadow: var(--shadow-floating)
+          aspect-ratio: 4 / 5
+          object-fit: cover
+
+        // Декоративные золотые уголки
+        &::before, &::after
+          content: ''
+          position: absolute
+          width: 8rem
+          height: 8rem
+          border: 1px solid var(--secondary)
+          opacity: 0.4
+          z-index: -1
+
+        &::before
+          top: -2rem
+          left: -2rem
+          border-right: none
+          border-bottom: none
+
+        &::after
+          bottom: -2rem
+          right: -2rem
+          border-left: none
+          border-top: none
+
+    .why-text
+        h2
+            color: var(--secondary)
+
+    .benefits-list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-6)
+
+      li
+        display: flex
+        align-items: flex-start
+        gap: var(--spacing-4)
+        
+        .icon-gold
+          margin-top: 0.25rem
+
+        p
+          margin: 0
+          font-size: 0.875rem
+
+  // --- Targets / Establishments ---
+  .mystery-targets
+    .tags-wrapper
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      gap: var(--spacing-4)
+
+    .pill-tag
+      background-color: var(--surface-container-lowest)
+      color: var(--primary)
+      font-family: var(--font-body)
+      font-weight: 600
+      padding: 1rem 2rem
+      border-radius: .3rem
+      transition: transform 0.3s ease
+      cursor: default
+      
+      &:hover
+        transform: translateY(-2px)
+
+  // --- Final CTA ---
+  .mystery-cta
+    padding-top: 0
+
+    .cta-box
+      position: relative
+      background-color: var(--primary)
+      border-radius: var(--radius-xl, 1rem)
+      padding: var(--spacing-16) var(--spacing-6)
+      text-align: center
+      overflow: hidden
+
+      h2
+        color: white
+      
+      @media (min-width: 768px)
+        padding: var(--spacing-20) var(--spacing-10)
+
+      &__gradient
+        position: absolute
+        inset: 0
+        background: linear-gradient(to bottom right, rgba(119, 90, 25, 0.15), transparent)
+        pointer-events: none
+
+      .cta-actions
+        display: flex
+        flex-direction: column
+        gap: var(--spacing-4)
+        justify-content: center
+        
+        @media (min-width: 500px)
+          flex-direction: row
+
+      .btn-glass
+        background-color: rgba(255, 255, 255, 0.1)
+        backdrop-filter: blur(12px)
+        -webkit-backdrop-filter: blur(12px)
+        border: 1px solid rgba(255, 255, 255, 0.2)
+        color: #ffffff
+        padding: 0.75rem 1.5rem
+        border-radius: var(--radius-md)
+        font-family: var(--font-body)
+        font-weight: 600
+        text-transform: uppercase
+        letter-spacing: 0.1em
+        cursor: pointer
+        transition: all 0.3s ease
+        
+        &:hover
+          background-color: rgba(255, 255, 255, 0.2)

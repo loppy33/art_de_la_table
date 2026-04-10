@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 export default function Home() {
@@ -14,10 +15,10 @@ export default function Home() {
           <div className="hero__content container">
             <h1 className="display-lg text-white">L'Art de la Table à la Française</h1>
             <p className="hero__subtitle text-white">Au service des hôteliers et restaurateurs d'exception</p>
-            <button className="btn-text hero__cta">
+            <Link href="/services" className="btn-text hero__cta">
               Découvrir nos services
               <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
+            </Link>
           </div>
         </section>
 
@@ -40,7 +41,7 @@ export default function Home() {
             <span className="label-md label-gold">Excellence Manufacturière</span>
             <h2 className="headline-lg">Le Mobilier : 100% Made in France</h2>
             <p>Nous collaborons avec les meilleurs artisans de l'hexagone pour concevoir des pièces qui traversent le temps. Notre savoir-faire français se reflète dans chaque courbe de bois et chaque couture de textile, garantissant une élégance pérenne à votre établissement.</p>
-            <button className="btn-primary">Découvrir notre sélection</button>
+            <Link href="/selection" className="btn-primary">Découvrir notre sélection</Link>
           </div>
         </section>
 
@@ -51,7 +52,7 @@ export default function Home() {
               <span className="label-md label-gold">Accompagnement Stratégique</span>
               <h2 className="headline-lg">F&B Paris : Audit & Expertise</h2>
               <p>De Paris à la Côte d'Azur, nos experts analysent vos flux opérationnels pour sublimer l'expérience client. Nous intervenons partout en France pour transformer vos points de vente en destinations gastronomiques incontournables.</p>
-              <button className="btn-secondary">Découvrir nos services</button>
+              <Link href="/services" className="btn-secondary">Découvrir nos services</Link>
             </div>
             <div className="audit__card">
               <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFeHQh4u3zF7bHrZqXaMKaDQ0fnyhYito039906pMwUDJwU-2E1uJJLfEpX_21okhHfnW3j6SoxxL13wBJuABH91GoKF0D8JVsNveE0yx0Rw4JKG7vThOv4UbvJKn2G_c_eQvSSdQDxTfognTtzn6s7YVzCRXVbfSYjO-wJwN4MlQJ5bu9w5ccCPboiivboA-ASQKARUz8dRLiOdNThroY8O7gHO2DPSglq_cNi_8nXEHyTp71Y3cdQ_GE6T00ABxwUwC3IRRbVU-u" alt="Professional consultant" />
@@ -76,7 +77,7 @@ export default function Home() {
                 <p>Une technologie de pointe conçue pour réduire vos consommations et maximiser la durée de vie de votre matériel.</p>
                 <div className="machine__actions">
                   <button className="btn-primary">Demander un devis</button>
-                  <button className="btn-text">Plus d'informations</button>
+                  <Link href="/about" className="btn-text">Plus d'informations</Link>
                 </div>
               </div>
               <div className="machine__image">
@@ -220,7 +221,7 @@ export default function Home() {
           <div className="container cta__content">
             <h2 className="display-lg text-white">Vous avez un projet ? On en parle ?</h2>
             <p className="text-white">Transformez votre vision en réalité avec nos experts en art de la table et hôtellerie.</p>
-            <button className="btn-primary">Prise de rendez-vous</button>
+            <Link href="/rendez-vous" className="btn-primary">Prise de rendez-vous</Link>
           </div>
         </section>
 
