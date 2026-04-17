@@ -1,3 +1,5 @@
+import { Providers } from './providers'
+
 import type { Metadata } from "next";
 import "./styles/index.sass";
 import Header from "./components/Header";
@@ -20,7 +22,7 @@ export default function RootLayout({
     >
       <body>
         <Header />
-        {children}
+        <Providers>{children}</Providers>
         <Footer />
       </body>
     </html>

@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Artisan {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  logo     String?
+  history  String?
+  featured Boolean   @default(false)
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  category    Category
+  artisanId   String
+  artisan     Artisan  @relation(fields: [artisanId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+enum Category {
+  VAISSELLE
+  VERRERIE
+  COUVERTS
+  LINGE_DE_TABLE
+  DECORATION
+  AUTRE
+}
+
+model Machine {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  image       String?
+  specs       Json?
+  highlights  String[]
+  createdAt   DateTime @default(now())
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  author    String
+  role      String?
+  quote     String
+  visible   Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model SiteContent {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}

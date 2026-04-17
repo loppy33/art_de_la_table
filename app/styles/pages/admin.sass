@@ -1,0 +1,482 @@
+// ============================================================
+// ADMIN — L'Art de la Table à la Française
+// Подключить в index.sass: @use "./pages/admin.sass"
+// ============================================================
+
+// --- LOGIN PAGE ---
+
+.admin-login
+  min-height: 100vh
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: var(--surface-container-low)
+
+  &__card
+    width: 100%
+    max-width: 420px
+    background-color: var(--surface-container-lowest)
+    border: var(--border-ghost)
+    box-shadow: var(--shadow-floating)
+    border-radius: var(--radius-xl)
+    padding: var(--spacing-8) var(--spacing-6)
+
+  &__logo
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-sm)
+    color: var(--primary)
+    margin-bottom: var(--spacing-2)
+    text-align: center
+
+  &__subtitle
+    font-size: var(--text-body-md)
+    color: var(--on-surface-variant)
+    text-align: center
+    margin-bottom: var(--spacing-6)
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 0.4rem
+    margin-bottom: var(--spacing-3)
+
+    label
+      font-size: var(--text-label-md)
+      font-weight: 600
+      text-transform: uppercase
+      letter-spacing: 0.1em
+      color: var(--on-surface-variant)
+
+    input
+      padding: 0.75rem var(--spacing-3)
+      border-radius: var(--radius-lg)
+      background-color: var(--surface-container)
+      font-size: var(--text-body-md)
+      color: var(--on-background)
+      transition: box-shadow 0.2s ease
+
+      &:focus
+        box-shadow: 0 0 0 2px var(--secondary-container)
+
+  &__error
+    font-size: var(--text-body-md)
+    color: #c0392b
+    text-align: center
+    margin-bottom: var(--spacing-2)
+
+  &__btn
+    width: 100%
+    padding: 0.85rem
+    background-color: var(--primary)
+    color: var(--on-primary)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    font-weight: 600
+    letter-spacing: 0.08em
+    border-radius: var(--radius-lg)
+    cursor: pointer
+    transition: opacity 0.2s ease
+    margin-top: var(--spacing-2)
+
+    &:hover
+      opacity: 0.88
+
+    &:disabled
+      opacity: 0.5
+      cursor: not-allowed
+
+
+// --- ADMIN LAYOUT (sidebar + main) ---
+
+.admin-layout
+  display: flex
+  min-height: 100vh
+  background-color: var(--surface-container-low)
+
+
+// --- SIDEBAR ---
+
+.admin-sidebar
+  width: 240px
+  min-height: 100vh
+  background-color: var(--surface-container-lowest)
+  border-right: var(--border-ghost)
+  box-shadow: var(--shadow-ambient)
+  display: flex
+  flex-direction: column
+  padding: var(--spacing-6) 0
+  position: sticky
+  top: 0
+
+  &__brand
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-sm)
+    color: var(--primary)
+    padding: 0 var(--spacing-4)
+    margin-bottom: var(--spacing-6)
+
+  &__label
+    font-size: var(--text-label-sm)
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.15em
+    color: var(--outline)
+    padding: 0 var(--spacing-4)
+    margin-bottom: var(--spacing-2)
+
+  &__nav
+    display: flex
+    flex-direction: column
+    gap: 2px
+    flex: 1
+
+  &__link
+    display: flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: 0.6rem var(--spacing-4)
+    font-size: var(--text-body-md)
+    color: var(--on-surface-variant)
+    border-radius: 0
+    transition: background-color 0.15s ease, color 0.15s ease
+
+    .material-symbols-outlined
+      font-size: 18px
+      opacity: 0.7
+
+    &:hover
+      background-color: var(--surface-container)
+      color: var(--primary)
+
+    &--active
+      background-color: var(--secondary-container)
+      color: var(--on-secondary-container)
+      font-weight: 600
+
+      .material-symbols-outlined
+        opacity: 1
+
+  &__footer
+    padding: var(--spacing-4)
+    border-top: var(--border-ghost)
+
+  &__logout
+    display: flex
+    align-items: center
+    gap: var(--spacing-2)
+    font-size: var(--text-body-md)
+    color: var(--outline)
+    cursor: pointer
+    transition: color 0.2s ease
+    background: none
+
+    .material-symbols-outlined
+      font-size: 18px
+
+    &:hover
+      color: #c0392b
+
+
+// --- ADMIN MAIN CONTENT ---
+
+.admin-main
+  flex: 1
+  padding: var(--spacing-8) var(--spacing-8)
+  max-width: 960px
+
+
+// --- PAGE HEADER ---
+
+.admin-header
+  display: flex
+  align-items: center
+  justify-content: space-between
+  margin-bottom: var(--spacing-6)
+
+  &__title
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-md)
+    color: var(--primary)
+    margin: 0
+
+  &__actions
+    display: flex
+    gap: var(--spacing-2)
+
+
+// --- BOUTONS ADMIN ---
+
+.admin-btn
+  display: inline-flex
+  align-items: center
+  gap: 0.4rem
+  padding: 0.6rem var(--spacing-3)
+  border-radius: var(--radius-lg)
+  font-family: var(--font-body)
+  font-size: var(--text-body-md)
+  font-weight: 600
+  cursor: pointer
+  transition: opacity 0.2s ease
+
+  .material-symbols-outlined
+    font-size: 16px
+
+  &--primary
+    background-color: var(--primary)
+    color: var(--on-primary)
+
+    &:hover
+      opacity: 0.88
+
+  &--ghost
+    background-color: var(--surface-container)
+    color: var(--on-background)
+
+    &:hover
+      background-color: var(--surface-container-high)
+
+  &--danger
+    background-color: transparent
+    color: #c0392b
+
+    &:hover
+      background-color: rgba(192, 57, 43, 0.06)
+
+
+// --- TABLE ---
+
+.admin-table
+  width: 100%
+  border-radius: var(--radius-xl)
+  background-color: var(--surface-container-lowest)
+  box-shadow: var(--shadow-ambient)
+  overflow: hidden
+
+  table
+    width: 100%
+    border-collapse: collapse
+
+  thead
+    background-color: var(--surface-container-low)
+
+  th
+    text-align: left
+    padding: var(--spacing-2) var(--spacing-3)
+    font-size: var(--text-label-md)
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    color: var(--outline)
+
+  td
+    padding: var(--spacing-2) var(--spacing-3)
+    font-size: var(--text-body-md)
+    color: var(--on-background)
+    border-top: var(--border-ghost)
+    vertical-align: middle
+
+  tr:hover td
+    background-color: var(--surface-container-low)
+
+  &__img
+    width: 40px
+    height: 40px
+    object-fit: cover
+    border-radius: var(--radius-md)
+
+  &__badge
+    display: inline-block
+    padding: 0.2rem 0.6rem
+    border-radius: var(--radius-sm)
+    font-size: var(--text-label-sm)
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.08em
+    background-color: var(--secondary-container)
+    color: var(--on-secondary-container)
+
+  &__actions
+    display: flex
+    gap: var(--spacing-2)
+
+
+// --- FORM ---
+
+.admin-form
+  background-color: var(--surface-container-lowest)
+  border-radius: var(--radius-xl)
+  box-shadow: var(--shadow-ambient)
+  padding: var(--spacing-6)
+  max-width: 680px
+
+  &__section
+    margin-bottom: var(--spacing-6)
+
+  &__section-title
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-sm)
+    color: var(--primary)
+    margin-bottom: var(--spacing-3)
+    padding-bottom: var(--spacing-2)
+    border-bottom: var(--border-ghost)
+
+  &__row
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: var(--spacing-3)
+
+    @media (max-width: 600px)
+      grid-template-columns: 1fr
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 0.4rem
+    margin-bottom: var(--spacing-3)
+
+  &__label
+    font-size: var(--text-label-md)
+    font-weight: 600
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    color: var(--on-surface-variant)
+
+  &__input,
+  &__select,
+  &__textarea
+    padding: 0.75rem var(--spacing-3)
+    border-radius: var(--radius-lg)
+    background-color: var(--surface-container)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    color: var(--on-background)
+    transition: box-shadow 0.2s ease
+    width: 100%
+
+    &:focus
+      box-shadow: 0 0 0 2px var(--secondary-container)
+
+  &__textarea
+    resize: vertical
+    min-height: 120px
+
+  &__select
+    cursor: pointer
+
+  &__upload
+    border: 2px dashed var(--outline-variant)
+    border-radius: var(--radius-lg)
+    padding: var(--spacing-6)
+    text-align: center
+    cursor: pointer
+    transition: border-color 0.2s ease, background-color 0.2s ease
+
+    &:hover
+      border-color: var(--secondary)
+      background-color: var(--surface-container)
+
+    p
+      font-size: var(--text-body-md)
+      color: var(--outline)
+      margin: 0
+
+    .material-symbols-outlined
+      font-size: 32px
+      color: var(--outline)
+      margin-bottom: var(--spacing-2)
+
+  &__preview
+    width: 100%
+    max-height: 200px
+    object-fit: cover
+    border-radius: var(--radius-lg)
+    margin-top: var(--spacing-2)
+
+  &__actions
+    display: flex
+    gap: var(--spacing-2)
+    justify-content: flex-end
+    padding-top: var(--spacing-4)
+    border-top: var(--border-ghost)
+
+
+// --- DASHBOARD CARDS ---
+
+.admin-dashboard
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  gap: var(--spacing-4)
+  margin-bottom: var(--spacing-8)
+
+.admin-stat
+  background-color: var(--surface-container-lowest)
+  border-radius: var(--radius-xl)
+  box-shadow: var(--shadow-ambient)
+  padding: var(--spacing-4)
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-2)
+
+  &__icon
+    .material-symbols-outlined
+      font-size: 24px
+      color: var(--secondary)
+
+  &__value
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-lg)
+    color: var(--primary)
+    line-height: 1
+
+  &__label
+    font-size: var(--text-label-md)
+    text-transform: uppercase
+    letter-spacing: 0.12em
+    color: var(--outline)
+
+
+// --- EMPTY STATE ---
+
+.admin-empty
+  text-align: center
+  padding: var(--spacing-12) var(--spacing-6)
+  color: var(--outline)
+
+  .material-symbols-outlined
+    font-size: 48px
+    margin-bottom: var(--spacing-3)
+    display: block
+
+  p
+    margin-bottom: var(--spacing-4)
+
+
+// --- TOAST / FEEDBACK ---
+
+.admin-toast
+  position: fixed
+  bottom: var(--spacing-4)
+  right: var(--spacing-4)
+  padding: var(--spacing-2) var(--spacing-4)
+  border-radius: var(--radius-lg)
+  font-size: var(--text-body-md)
+  font-weight: 500
+  box-shadow: var(--shadow-floating)
+  z-index: 9999
+  animation: toast-in 0.25s ease
+
+  &--success
+    background-color: #e9f7ef
+    color: #1e8449
+
+  &--error
+    background-color: #fdedec
+    color: #c0392b
+
+@keyframes toast-in
+  from
+    opacity: 0
+    transform: translateY(8px)
+  to
+    opacity: 1
+    transform: translateY(0)
