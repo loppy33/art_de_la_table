@@ -1,0 +1,346 @@
+.audit-conseil
+  padding-bottom: var(--spacing-20)
+  scroll-behavior: smooth
+
+  // Базовые утилиты
+  .text-white
+    color: #ffffff
+  .text-light
+    color: rgba(255, 255, 255, 0.7)
+  .text-muted
+    color: var(--on-surface-variant)
+  .bg-primary
+    background-color: var(--primary)
+  .bg-low
+    background-color: var(--surface-container-low)
+  .text-center
+    text-align: center
+  .italic
+    font-style: italic
+  .block
+    display: block
+  .m-0
+    margin: 0
+  .mb-4
+    margin-bottom: var(--spacing-3)
+  .mb-6
+    margin-bottom: var(--spacing-6)
+  .mb-8
+    margin-bottom: var(--spacing-8)
+  .mb-10
+    margin-bottom: var(--spacing-10)
+  .mb-12
+    margin-bottom: var(--spacing-12, 4.5rem)
+  .mb-16
+    margin-bottom: var(--spacing-16)
+  .mt-8
+    margin-top: var(--spacing-6)
+  .max-w-xl
+    max-width: 700px
+  .mx-auto
+    margin-left: auto
+    margin-right: auto
+
+  .hidden-mobile
+    @media (max-width: 767px)
+      display: none
+
+  // Типографика
+  .label-gold
+    color: var(--secondary)
+    display: block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+    margin-bottom: var(--spacing-6)
+
+  .label-gold-light
+    color: var(--secondary-container)
+    display: block
+    text-transform: uppercase
+    letter-spacing: 0.2em
+    font-size: 0.75rem
+
+  .label-sm
+    font-family: var(--font-body)
+    font-size: 0.625rem
+    text-transform: uppercase
+    letter-spacing: 0.15em
+
+  .headline-sm
+    font-family: var(--font-heading)
+    font-size: 1.25rem
+    // color: var(--primary)
+    margin-bottom: 0.5rem
+
+  .headline-md
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin-bottom: var(--spacing-3)
+
+  .display-sm
+    font-family: var(--font-heading)
+    font-size: 2.25rem
+    // color: var(--primary)
+    line-height: 1.2
+    @media (min-width: 768px)
+      font-size: 2.5rem
+
+  .display-lg
+    font-family: var(--font-heading)
+    font-size: 3rem
+    line-height: 1.1
+    margin-bottom: var(--spacing-6)
+    @media (min-width: 768px)
+      font-size: 4.5rem
+
+  .text-body
+    color: var(--on-surface-variant)
+    font-size: 1.125rem
+    line-height: 1.8
+
+  .icon-gold
+    color: var(--secondary)
+    font-size: 1.5rem
+    &.lg-icon
+      font-size: 2.5rem
+
+  .icon-gold-light
+    color: var(--secondary-container)
+    font-size: 1.5rem
+    margin-top: 0.25rem
+
+  // Отступы секций
+  section
+    padding-top: var(--spacing-16)
+    padding-bottom: var(--spacing-16)
+    @media (min-width: 768px)
+      padding-top: var(--spacing-20)
+      padding-bottom: var(--spacing-20)
+
+  // --- Hero Section ---
+  .audit-hero
+    position: relative
+    min-height: 85vh
+    display: flex
+    align-items: center
+    padding: 0
+
+    &__bg
+      position: absolute
+      inset: 0
+      z-index: 0
+      background-color: var(--primary)
+      
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        opacity: 0.5
+    
+    &__overlay
+      position: absolute
+      inset: 0
+      background: linear-gradient(to bottom, rgba(0, 12, 30, 0.4), rgba(0, 35, 68, 0.8))
+
+    &__content
+      position: relative
+      z-index: 10
+      width: 100%
+      display: flex
+      justify-content: center
+      
+      .hero-text-block
+        max-width: 800px
+        
+      .hero-subtitle
+        font-size: 1.25rem
+        color: rgba(255, 255, 255, 0.9)
+        margin: 0 auto
+        max-width: 600px
+        @media (min-width: 768px)
+          font-size: 1.5rem
+
+  // --- Intro Section (Asymmetric) ---
+  .audit-intro
+    .intro-grid
+      display: grid
+      gap: var(--spacing-10)
+      @media (min-width: 768px)
+        grid-template-columns: 7fr 5fr
+        align-items: center
+        gap: var(--spacing-12)
+
+    .intro-text
+      .display-sm
+        margin: 0
+        line-height: 1.3
+
+    .intro-desc
+      @media (min-width: 768px)
+        padding-left: var(--spacing-8)
+        border-left: 1px solid rgba(195, 198, 207, 0.3) // outline-variant
+      p
+        margin: 0
+
+  // --- Services Grid ---
+  .audit-services
+    .services-header
+      margin-bottom: var(--spacing-16)
+      max-width: 600px
+      
+      .display-sm
+        margin-bottom: var(--spacing-3)
+      p
+        margin: 0
+
+    .services-grid
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-6)
+      
+      @media (min-width: 600px)
+        grid-template-columns: 1fr 1fr
+      @media (min-width: 992px)
+        grid-template-columns: repeat(4, 1fr)
+
+    .service-card
+      background-color: var(--surface-container-lowest)
+      padding: var(--spacing-8)
+      border-radius: var(--radius-xl, 0.75rem)
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      min-height: 320px
+      cursor: default
+      
+      // Эффекты при наведении
+      &.transition-bg
+        transition: background-color 0.5s ease
+        &:hover
+          background-color: var(--primary)
+          
+          .transition-icon
+            color: var(--secondary-container)
+          .transition-text
+            color: #ffffff
+          .transition-text-sub
+            color: rgba(255, 255, 255, 0.7)
+
+      .transition-icon, .transition-text, .transition-text-sub
+        transition: color 0.5s ease
+
+      p
+        font-size: 0.875rem
+        line-height: 1.6
+        margin: 0
+
+  // --- Methodology Section ---
+  .audit-methodology
+    overflow: hidden
+    
+    .methodology-steps
+      position: relative
+      padding: var(--spacing-6) 0
+
+    .connecting-line
+      display: none
+      @media (min-width: 992px)
+        display: block
+        position: absolute
+        top: 4rem // Позиция по центру кружков
+        left: 0
+        width: 100%
+        height: 1px
+        background-color: rgba(195, 198, 207, 0.3) // outline-variant
+        z-index: 0
+
+    .steps-wrapper
+      display: grid
+      grid-template-columns: 1fr
+      gap: var(--spacing-10)
+      position: relative
+      z-index: 10
+      
+      @media (min-width: 600px)
+        grid-template-columns: repeat(3, 1fr)
+      @media (min-width: 992px)
+        grid-template-columns: repeat(5, 1fr)
+        gap: var(--spacing-6)
+
+    .step-node
+      display: flex
+      flex-direction: column
+      align-items: center
+      text-align: center
+
+      .step-circle
+        width: 4rem
+        height: 4rem
+        border-radius: 50%
+        background-color: var(--surface-container-lowest)
+        border: 1px solid rgba(119, 90, 25, 0.3) // secondary 30%
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-bottom: var(--spacing-6)
+
+      .step-number
+        font-family: var(--font-heading)
+        font-size: 1.5rem
+        color: var(--secondary)
+        line-height: 1
+
+      .headline-sm
+        margin-bottom: 0.25rem
+
+  // --- Why Choose Us Section ---
+  .audit-why
+    .why-grid
+      display: grid
+      gap: var(--spacing-16)
+      @media (min-width: 992px)
+        grid-template-columns: 1fr 1fr
+        align-items: center
+        gap: var(--spacing-20)
+
+    .why-visual
+      position: relative
+      
+      img
+        width: 100%
+        aspect-ratio: 4 / 5
+        object-fit: cover
+        border-radius: var(--radius-lg)
+
+      .date-badge
+        position: absolute
+        bottom: -2rem
+        right: -2rem
+        padding: var(--spacing-10)
+        
+      .glassmorphism-dark
+        background-color: rgba(119, 90, 25, 0.9) // secondary
+        backdrop-filter: blur(12px)
+        color: #ffffff
+        border-radius: var(--radius-md)
+
+    .benefits-list
+      display: flex
+      flex-direction: column
+      gap: var(--spacing-10)
+
+      li
+        display: flex
+        align-items: flex-start
+        gap: var(--spacing-6)
+
+        p
+          margin: 0
+          font-size: 1rem
+          line-height: 1.6
+
+  // --- Final CTA ---
+  .audit-cta
+    padding-bottom: 0

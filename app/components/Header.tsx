@@ -23,6 +23,7 @@ export default function Header() {
     { href: '/', label: 'Accueil' },
     { href: '/services', label: 'Nos services' },
     { href: '/selection', label: 'Notre sélection' },
+    { href: '/audit-conseil', label: 'Audit & Conseil' },
     { href: '/client-mystere', label: 'Client Mystère' },
     { href: '/about', label: 'À propos' },
   ]
