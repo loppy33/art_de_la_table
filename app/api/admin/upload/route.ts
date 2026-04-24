@@ -4,39 +4,71 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY! // service role — только на сервере
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
-// POST /api/admin/upload
-// FormData: file (File), folder (string) — ex: "products", "artisans", "machines"
 export async function POST(req: Request) {
-  const guard = await requireAdmin()
-  if (guard.error) return guard.error
+  try {
+    console.log("📥 UPLOAD START")
 
-  const form = await req.formData()
-  const file = form.get('file') as File | null
-  const folder = (form.get('folder') as string) || 'misc'
+    const guard = await requireAdmin()
+    if (guard.error) return guard.error
 
-  if (!file) {
-    return NextResponse.json({ error: 'Fichier manquant' }, { status: 400 })
+    const form = await req.formData()
+    const file = form.get('file') as File | null
+    const folder = (form.get('folder') as string) || 'misc'
+
+    if (!file) {
+      return NextResponse.json(
+        { error: 'No file provided' },
+        { status: 400 }
+      )
+    }
+
+    const fileExt = file.name.split('.').pop()
+    const fileName = `${folder}/${Date.now()}-${Math.random()
+      .toString(36)
+      .substring(2)}.${fileExt}`
+
+    const arrayBuffer = await file.arrayBuffer()
+
+    console.log("⬆️ Uploading:", fileName)
+
+    const { error } = await supabase.storage
+      .from('media') // 👈 bucket MUST exist
+      .upload(fileName, arrayBuffer, {
+        contentType: file.type,
+        upsert: false,
+      })
+
+    if (error) {
+      console.error("❌ SUPABASE ERROR:", error)
+      return NextResponse.json(
+        {
+          error: error.message,
+        },
+        { status: 500 }
+      )
+    }
+
+    const { data } = supabase.storage
+      .from('media')
+      .getPublicUrl(fileName)
+
+    console.log("✅ UPLOADED:", data.publicUrl)
+
+    return NextResponse.json(
+      { url: data.publicUrl },
+      { status: 201 }
+    )
+  } catch (err: any) {
+    console.error("🔥 UPLOAD CRASH:", err)
+
+    return NextResponse.json(
+      {
+        error: err.message || 'Unknown error',
+      },
+      { status: 500 }
+    )
   }
-
-  const ext = file.name.split('.').pop()
-  const filename = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
-  const buffer = Buffer.from(await file.arrayBuffer())
-
-  const { error } = await supabase.storage
-    .from('media')
-    .upload(filename, buffer, {
-      contentType: file.type,
-      upsert: false,
-    })
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
-  }
-
-  const { data } = supabase.storage.from('media').getPublicUrl(filename)
-
-  return NextResponse.json({ url: data.publicUrl }, { status: 201 })
 }

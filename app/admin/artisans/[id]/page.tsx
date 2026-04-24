@@ -1,5 +1,9 @@
 import ArtisanForm from "../ArtisanForm";
 
-export default function EditArtisanPage({ params }: { params: { id: string } }) {
-  return <ArtisanForm id={params.id} />
+export default async function EditArtisanPage({ params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  return <ArtisanForm id={id} />
 }

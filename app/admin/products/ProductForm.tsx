@@ -44,14 +44,21 @@ export default function ProductForm({ id }: { id?: string }) {
 
     if (isEdit) {
       fetch(`/api/admin/products/${id}`)
+
         .then(r => r.json())
-        .then(data => setForm({
-          name: data.name ?? '',
-          description: data.description ?? '',
-          image: data.image ?? '',
-          category: data.category ?? 'VAISSELLE',
-          artisanId: data.artisanId ?? '',
-        }))
+        .then(data => {
+
+          console.log("PRODUCT API RESPONSE:", data)
+
+          setForm({
+            name: data.name ?? '',
+            description: data.description ?? '',
+            image: data.image ?? '',
+            category: data.category ?? 'VAISSELLE',
+            artisanId: data.artisanId ?? '',
+          })
+        }
+        )
     }
   }, [id])
 

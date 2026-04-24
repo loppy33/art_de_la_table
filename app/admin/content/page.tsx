@@ -81,7 +81,7 @@ export default function ContentPage() {
         {/* Accueil */}
         <div className="admin-form__section">
           <h2 className="admin-form__section-title">Page d'accueil</h2>
-          {FIELDS.filter(f => f.key.startsWith('hero') || f.key.startsWith('stats')).map(f => (
+          {FIELDS.filter(f => f.key.startsWith('hero') ).map(f => (
             <div key={f.key} className="admin-form__field">
               <label className="admin-form__label">{f.label}</label>
               <div style={{ display: 'flex', gap: 'var(--spacing-2)' }}>

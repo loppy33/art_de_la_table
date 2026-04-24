@@ -1,4 +1,8 @@
 import MachineForm from '../MachineForm'
-export default function EditMachinePage({ params }: { params: { id: string } }) {
-  return <MachineForm id={params.id} />
+export default async function EditMachinePage({ params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  return <MachineForm id={id} />
 }

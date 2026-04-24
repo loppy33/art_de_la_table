@@ -1,6 +1,10 @@
 import TestimonialForm from "../TestimonialForm";
 
-export default function EditTestimonialPage({ params }: { params: { id: string } }) {
-  return <TestimonialForm id={params.id} />
+export default async function EditTestimonialPage({params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  return <TestimonialForm id={id} />
 }
  
