@@ -13,7 +13,6 @@ async function getData() {
 export default async function About() {
   const { artisans, c } = await getData()
 
-  // Fallback artisans si BDD vide
   const displayArtisans = artisans.length > 0
     ? artisans
     : [
@@ -22,6 +21,8 @@ export default async function About() {
         { id: "3", name: "Lin de Normandie", logo: null, history: null, featured: false, slug: "" },
         { id: "4", name: "Orfèvrerie Royale", logo: null, history: null, featured: false, slug: "" },
       ]
+
+  const storiedArtisans = artisans.filter(a => a.history && a.history.trim().length > 0)
 
   return (
     <main className="about">
@@ -164,9 +165,10 @@ export default async function About() {
         </div>
       </section>
 
-      {/* Section 5: Partenaires artisans — depuis BDD */}
+      {/* Section 5: Partenaires */}
       <section className="about-partners bg-low">
         <div className="container">
+
           <div className="partners-header">
             <div className="max-w-xl">
               <h2 className="headline-lg">Nos Partenaires Artisans</h2>
@@ -178,39 +180,61 @@ export default async function About() {
             </Link>
           </div>
 
+          {/* Grid logos */}
           <div className="partners-grid">
             {displayArtisans.map((artisan) => (
               <div key={artisan.id} className="partner-card ambient-shadow">
-                {artisan.logo ? (
-                  <img
-                    src={artisan.logo}
-                    alt={artisan.name}
-                    className="partner-card__logo"
-                  />
-                ) : (
-                  <span className="headline-md text-muted">{artisan.name}</span>
-                )}
                 {artisan.featured && (
-                  <span className="partner-card__badge">
+                  <span className="partner-card__featured">
                     <span className="material-symbols-outlined">star</span>
-                    Partenaire prioritaire
+                    Prioritaire
                   </span>
+                )}
+                {artisan.logo ? (
+                  <img src={artisan.logo} alt={artisan.name} className="partner-card__logo" />
+                ) : (
+                  <span className="partner-card__name">{artisan.name}</span>
                 )}
               </div>
             ))}
           </div>
 
-          {/* Histoire des artisans featured */}
-          {artisans.filter(a => a.featured && a.history).length > 0 && (
+          {/* Histoires éditoriales */}
+          {storiedArtisans.length > 0 && (
             <div className="artisans-stories">
-              {artisans.filter(a => a.featured && a.history).map(a => (
-                <div key={a.id} className="artisan-story">
-                  <h3 className="headline-md">{a.name}</h3>
-                  <p>{a.history}</p>
+              {storiedArtisans.map((artisan) => (
+                <div key={artisan.id} className="artisan-story">
+
+                  <div className={`artisan-story__visual${!artisan.logo ? ' artisan-story__visual--empty' : ''}`}>
+                    {artisan.logo
+                      ? <img src={artisan.logo} alt={artisan.name} />
+                      : <span className="material-symbols-outlined">storefront</span>
+                    }
+                  </div>
+
+                  <div className="artisan-story__content">
+                    {artisan.featured && (
+                      <span className="artisan-story__featured-label">
+                        <span className="material-symbols-outlined">star</span>
+                        Partenaire prioritaire
+                      </span>
+                    )}
+                    <h3 className="artisan-story__title">{artisan.name}</h3>
+                    <div className="artisan-story__divider" />
+                    <p className="artisan-story__text">{artisan.history}</p>
+                    {artisan.featured && (
+                      <span className="artisan-story__epv">
+                        <span className="material-symbols-outlined">verified</span>
+                        Entreprise du Patrimoine Vivant
+                      </span>
+                    )}
+                  </div>
+
                 </div>
               ))}
             </div>
           )}
+
         </div>
       </section>
 
