@@ -3,9 +3,12 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
+import { useEffect, useState } from 'react'
 
 const NAV = [
   { href: '/admin', label: 'Tableau de bord', icon: 'dashboard' },
+  { href: '/admin/contacts', label: 'Demandes', icon: 'mark_email_unread' },
+  { href: '/admin/newsletter', label: 'Newsletter', icon: 'mail' },
   { href: '/admin/artisans', label: 'Artisans', icon: 'storefront' },
   { href: '/admin/products', label: 'Produits', icon: 'inventory_2' },
   { href: '/admin/machines', label: 'Machines', icon: 'precision_manufacturing' },
@@ -15,6 +18,14 @@ const NAV = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const [unread, setUnread] = useState(0)
+
+  useEffect(() => {
+    fetch('/api/admin/stats')
+      .then(r => r.json())
+      .then(d => setUnread(d.unreadContacts ?? 0))
+      .catch(() => {})
+  }, [pathname])
 
   if (pathname === '/admin/login') return <>{children}</>
 
@@ -22,9 +33,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="admin-layout">
       <aside className="admin-sidebar">
         <div className="admin-sidebar__brand">L'Art de la Table</div>
-
         <p className="admin-sidebar__label">Navigation</p>
-
         <nav className="admin-sidebar__nav">
           {NAV.map(({ href, label, icon }) => {
             const isActive =
@@ -37,11 +46,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               >
                 <span className="material-symbols-outlined">{icon}</span>
                 {label}
+                {href === '/admin/contacts' && unread > 0 && (
+                  <span className="admin-sidebar__badge">{unread}</span>
+                )}
               </Link>
             )
           })}
         </nav>
-
         <div className="admin-sidebar__footer">
           <button
             className="admin-sidebar__logout"
@@ -52,7 +63,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
         </div>
       </aside>
-
       <main className="admin-main">{children}</main>
     </div>
   )

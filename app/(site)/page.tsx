@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
+import NewsletterForm from "../components/NewsletterForm"
 
 async function getData() {
   const [testimonials, content] = await Promise.all([
@@ -258,10 +259,11 @@ export default async function Home() {
         <div className="container newsletter__container">
           <h3 className="headline-lg">Restez informé de nos nouveautés</h3>
           <p>Inscrivez-vous pour recevoir notre catalogue exclusif et nos actualités.</p>
-          <form className="newsletter__form">
+          {/* <form className="newsletter__form">
             <input type="email" placeholder="Votre adresse email" required />
             <button type="submit" className="btn-primary">S'inscrire</button>
-          </form>
+          </form> */}
+          <NewsletterForm />
         </div>
       </section>
 

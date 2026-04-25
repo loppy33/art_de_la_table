@@ -68,3 +68,22 @@ model SiteContent {
   key   String @unique
   value String
 }
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactRequest {
+  id          String   @id @default(cuid())
+  lastName    String
+  firstName   String
+  company     String?
+  email       String
+  phone       String?
+  need        String
+  message     String?
+  read        Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}

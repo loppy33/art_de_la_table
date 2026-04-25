@@ -8,9 +8,13 @@ interface Stats {
   artisans: number
   machines: number
   testimonials: number
+  subscribers: number
+  unreadContacts: number
 }
 
 const CARDS = [
+  { key: 'unreadContacts', label: 'Demandes non lues', icon: 'mark_email_unread', href: '/admin/contacts', urgent: true },
+  { key: 'subscribers', label: 'Abonnés newsletter', icon: 'mail', href: '/admin/newsletter' },
   { key: 'artisans', label: 'Artisans', icon: 'storefront', href: '/admin/artisans' },
   { key: 'products', label: 'Produits', icon: 'inventory_2', href: '/admin/products' },
   { key: 'machines', label: 'Machines', icon: 'precision_manufacturing', href: '/admin/machines' },
@@ -31,8 +35,12 @@ export default function AdminDashboard() {
       </div>
 
       <div className="admin-dashboard">
-        {CARDS.map(({ key, label, icon, href }) => (
-          <Link key={key} href={href} className="admin-stat">
+        {CARDS.map(({ key, label, icon, href, urgent }) => (
+          <Link
+            key={key}
+            href={href}
+            className={`admin-stat${urgent && stats?.[key as keyof Stats] ? ' admin-stat--urgent' : ''}`}
+          >
             <div className="admin-stat__icon">
               <span className="material-symbols-outlined">{icon}</span>
             </div>
@@ -57,8 +65,7 @@ export default function AdminDashboard() {
               <td>Artisans (Riou, Suzant, Le Jacquard Français…)</td>
               <td>
                 <Link href="/admin/artisans/new" className="admin-btn admin-btn--ghost">
-                  <span className="material-symbols-outlined">add</span>
-                  Ajouter
+                  <span className="material-symbols-outlined">add</span>Ajouter
                 </Link>
               </td>
             </tr>
@@ -66,8 +73,7 @@ export default function AdminDashboard() {
               <td>Produits — Notre Sélection</td>
               <td>
                 <Link href="/admin/products/new" className="admin-btn admin-btn--ghost">
-                  <span className="material-symbols-outlined">add</span>
-                  Ajouter
+                  <span className="material-symbols-outlined">add</span>Ajouter
                 </Link>
               </td>
             </tr>
@@ -75,8 +81,7 @@ export default function AdminDashboard() {
               <td>Machines — Éclat de France</td>
               <td>
                 <Link href="/admin/machines/new" className="admin-btn admin-btn--ghost">
-                  <span className="material-symbols-outlined">add</span>
-                  Ajouter
+                  <span className="material-symbols-outlined">add</span>Ajouter
                 </Link>
               </td>
             </tr>
@@ -84,8 +89,7 @@ export default function AdminDashboard() {
               <td>Témoignages clients</td>
               <td>
                 <Link href="/admin/testimonials/new" className="admin-btn admin-btn--ghost">
-                  <span className="material-symbols-outlined">add</span>
-                  Ajouter
+                  <span className="material-symbols-outlined">add</span>Ajouter
                 </Link>
               </td>
             </tr>
@@ -93,8 +97,7 @@ export default function AdminDashboard() {
               <td>Contenu du site (À propos, contacts…)</td>
               <td>
                 <Link href="/admin/content" className="admin-btn admin-btn--ghost">
-                  <span className="material-symbols-outlined">edit</span>
-                  Modifier
+                  <span className="material-symbols-outlined">edit</span>Modifier
                 </Link>
               </td>
             </tr>
