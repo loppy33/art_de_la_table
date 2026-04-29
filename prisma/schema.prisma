@@ -87,3 +87,25 @@ model ContactRequest {
   read        Boolean  @default(false)
   createdAt   DateTime @default(now())
 }
+
+model RendezVous {
+  id            String   @id @default(cuid())
+  lastName      String
+  firstName     String
+  company       String?
+  email         String
+  phone         String?
+  projectType   String
+  preferredDate String?
+  preferredTime String?
+  message       String?
+  status        RdvStatus @default(PENDING)
+  read          Boolean  @default(false)
+  createdAt     DateTime @default(now())
+}
+
+enum RdvStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}

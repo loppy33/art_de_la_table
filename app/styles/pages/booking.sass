@@ -267,3 +267,373 @@
     transform: translateX(-100%)
   100%
     transform: translateX(350%)
+
+    // Trust logos — featured артизан выделен
+.trust-logos
+  &__featured
+    opacity: 1 !important
+    color: var(--secondary)
+    font-style: italic
+
+// Booking Form — multi-step
+.booking-form
+  width: 100%
+  position: relative
+  z-index: 10
+  padding: var(--spacing-10)
+  display: flex
+  flex-direction: column
+  gap: var(--spacing-8)
+
+  @media (min-width: 768px)
+    padding: var(--spacing-12) var(--spacing-16)
+
+  // Steps indicator
+  &__steps
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 0
+    margin-bottom: var(--spacing-4)
+
+  &__step
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: var(--spacing-2)
+    color: var(--outline)
+    font-size: var(--text-label-sm)
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    font-weight: 600
+    transition: color 0.3s ease
+
+    &--done, &--active
+      color: var(--primary)
+
+  &__step-circle
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    border: 2px solid var(--outline-variant)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: var(--font-heading)
+    font-size: 1rem
+    color: var(--outline)
+    background-color: var(--surface-container-lowest)
+    transition: all 0.3s ease
+
+    .booking-form__step--done &
+      border-color: var(--secondary)
+      background-color: var(--secondary)
+      color: var(--on-primary)
+
+    .booking-form__step--active &
+      border-color: var(--primary)
+      color: var(--primary)
+
+    .material-symbols-outlined
+      font-size: 16px
+
+  &__step-line
+    flex: 1
+    height: 1px
+    background-color: var(--outline-variant)
+    max-width: 80px
+    margin-bottom: 22px
+    opacity: 0.4
+
+  // Panel
+  &__panel
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-6)
+
+  &__panel-title
+    font-family: var(--font-heading)
+    font-size: 1.5rem
+    color: var(--primary)
+    margin: 0
+
+  &__panel-desc
+    color: var(--on-surface-variant)
+    margin: 0
+    margin-top: calc(var(--spacing-2) * -1)
+
+  // Fields
+  &__row
+    display: grid
+    gap: var(--spacing-4)
+    @media (min-width: 600px)
+      grid-template-columns: 1fr 1fr
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 0.4rem
+
+    label
+      font-size: var(--text-label-md)
+      font-weight: 600
+      text-transform: uppercase
+      letter-spacing: 0.1em
+      color: var(--on-surface-variant)
+
+    input, textarea
+      padding: 0.75rem var(--spacing-4)
+      border-radius: var(--radius-lg)
+      background-color: var(--surface-container)
+      font-family: var(--font-body)
+      font-size: var(--text-body-md)
+      color: var(--on-background)
+      transition: box-shadow 0.2s ease
+      border: none
+
+      &:focus
+        outline: none
+        box-shadow: 0 0 0 2px var(--secondary-container)
+
+    input[type="date"]
+      cursor: pointer
+
+    textarea
+      resize: vertical
+      min-height: 80px
+
+  // Project type buttons
+  &__project-types
+    display: flex
+    flex-wrap: wrap
+    gap: var(--spacing-2)
+
+  &__type-btn
+    padding: 0.5rem 1rem
+    border-radius: 2rem
+    font-family: var(--font-body)
+    font-size: var(--text-label-md)
+    color: var(--on-surface-variant)
+    background-color: var(--surface-container)
+    cursor: pointer
+    transition: all 0.2s ease
+    border: 1px solid transparent
+    font-weight: 500
+
+    &:hover
+      background-color: var(--surface-container-high)
+      color: var(--primary)
+
+    &--active
+      background-color: var(--primary)
+      color: var(--on-primary)
+      border-color: transparent
+
+  // Time slots
+  &__time-slots
+    display: flex
+    flex-wrap: wrap
+    gap: var(--spacing-2)
+
+  &__time-btn
+    padding: 0.5rem 1rem
+    border-radius: var(--radius-md)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    color: var(--on-surface-variant)
+    background-color: var(--surface-container)
+    cursor: pointer
+    transition: all 0.2s ease
+    font-weight: 500
+    border: none
+
+    &:hover
+      background-color: var(--surface-container-high)
+
+    &--active
+      background-color: var(--secondary)
+      color: var(--on-primary)
+
+  // Actions
+  &__actions
+    display: flex
+    justify-content: flex-end
+    padding-top: var(--spacing-4)
+    border-top: 1px solid var(--surface-container)
+
+    &--spaced
+      justify-content: space-between
+
+  &__next
+    display: inline-flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: 0.85rem var(--spacing-6)
+    background-color: var(--primary)
+    color: var(--on-primary)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    font-weight: 600
+    border-radius: var(--radius-lg)
+    cursor: pointer
+    transition: opacity 0.2s ease
+    border: none
+
+    .material-symbols-outlined
+      font-size: 18px
+
+    &:hover
+      opacity: 0.88
+
+    &:disabled
+      opacity: 0.4
+      cursor: not-allowed
+
+  &__back
+    display: inline-flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: 0.85rem var(--spacing-4)
+    color: var(--on-surface-variant)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    cursor: pointer
+    transition: color 0.2s ease
+    background: none
+    border: none
+
+    .material-symbols-outlined
+      font-size: 18px
+
+    &:hover
+      color: var(--primary)
+
+  &__submit
+    display: inline-flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: 0.85rem var(--spacing-8)
+    background-color: var(--secondary)
+    color: var(--on-primary)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    font-weight: 700
+    border-radius: var(--radius-lg)
+    cursor: pointer
+    transition: opacity 0.2s ease
+    letter-spacing: 0.04em
+    border: none
+
+    .material-symbols-outlined
+      font-size: 18px
+
+    &:hover
+      opacity: 0.88
+
+    &:disabled
+      opacity: 0.5
+      cursor: not-allowed
+
+  // Recap
+  &__recap
+    background-color: var(--surface-container-low)
+    border-radius: var(--radius-lg)
+    overflow: hidden
+
+  &__recap-section
+    padding: var(--spacing-5) var(--spacing-6)
+
+  &__recap-divider
+    height: 1px
+    background-color: var(--surface-container)
+
+  &__recap-label
+    font-size: var(--text-label-sm)
+    font-weight: 700
+    text-transform: uppercase
+    letter-spacing: 0.12em
+    color: var(--outline)
+    margin: 0 0 var(--spacing-2)
+
+  &__recap-value
+    font-size: 1.0625rem
+    color: var(--primary)
+    font-weight: 500
+    margin: 0
+    text-transform: capitalize
+
+    &.booking-form__recap-message
+      white-space: pre-line
+      color: var(--on-surface-variant)
+      font-weight: 400
+      text-transform: none
+
+  &__recap-sub
+    font-size: var(--text-body-md)
+    color: var(--on-surface-variant)
+    margin: 2px 0 0
+
+  &__error
+    color: #c0392b
+    font-size: var(--text-body-md)
+    text-align: center
+
+  // Success state
+  &__success
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+    gap: var(--spacing-6)
+    padding: var(--spacing-12) var(--spacing-6)
+
+  &__success-icon
+    width: 80px
+    height: 80px
+    border-radius: 50%
+    background-color: rgba(5, 150, 105, 0.1)
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .material-symbols-outlined
+      font-size: 2.5rem
+      color: #059669
+
+  &__success-title
+    font-family: var(--font-heading)
+    font-size: 1.75rem
+    color: var(--primary)
+    margin: 0
+
+  &__success-desc
+    color: var(--on-surface-variant)
+    max-width: 400px
+    margin: 0
+    line-height: 1.7
+
+    strong
+      color: var(--primary)
+
+  &__success-summary
+    background-color: var(--surface-container-low)
+    border-radius: var(--radius-lg)
+    padding: var(--spacing-6)
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-3)
+    width: 100%
+    max-width: 420px
+    text-align: left
+
+  &__summary-item
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)
+    font-size: var(--text-body-md)
+    color: var(--on-background)
+
+    .material-symbols-outlined
+      font-size: 18px
+      color: var(--secondary)
+      flex-shrink: 0
