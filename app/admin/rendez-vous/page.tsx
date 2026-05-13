@@ -238,7 +238,7 @@ export default function RendezVousPage() {
                     {selected.status === 'CONFIRMED' ? 'check_circle' : 'cancel'}
                   </span>
                   {STATUS_CONFIG[selected.status].label}
-                  {selected.status !== 'PENDING' && (
+                  {selected.status === 'CONFIRMED'  && (
                     <button
                       style={{ marginLeft: 'auto', fontSize: 'var(--text-label-sm)', opacity: 0.7, background: 'none', cursor: 'pointer', color: 'inherit' }}
                       onClick={() => updateStatus(selected.id, selected.status === 'CONFIRMED' ? 'CANCELLED' : 'CONFIRMED')}
