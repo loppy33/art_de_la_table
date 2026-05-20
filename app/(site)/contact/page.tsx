@@ -9,6 +9,7 @@ const NEEDS = [
   { value: 'other', label: 'Autre demande' },
 ]
 
+
 export default function Contact() {
   const [form, setForm] = useState({
     lastName: '', firstName: '', company: '',

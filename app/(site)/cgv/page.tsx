@@ -1,3 +1,6 @@
+import { cgvMetadata } from '@/lib/metadata'
+export const metadata = cgvMetadata
+
 export default function CGV() {
   return (
     <main className="cgv">

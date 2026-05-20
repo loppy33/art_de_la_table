@@ -1,6 +1,9 @@
 import BookingForm from '@/app/components/BookingForm'
 import { prisma } from '@/lib/prisma'
 
+import { bookingMetadata } from '@/lib/metadata'
+export const metadata = bookingMetadata
+
 async function getArtisans() {
   return prisma.artisan.findMany({
     orderBy: [{ featured: 'desc' }, { name: 'asc' }],

@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 
+import { aboutMetadata } from '@/lib/metadata'
+export const metadata = aboutMetadata
+
 async function getData() {
   const [artisans, content] = await Promise.all([
     prisma.artisan.findMany({ orderBy: [{ featured: "desc" }, { name: "asc" }] }),

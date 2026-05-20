@@ -2,12 +2,11 @@ import { Providers } from './providers'
 
 import type { Metadata } from "next";
 import "./styles/index.sass";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 
 
 export const metadata: Metadata = {
-  title: "L'Art de la Table",
+  title: "L'Art de la Table à la Française",
   description: "Au service des hôteliers et restaurateurs d'exception",
 };
 

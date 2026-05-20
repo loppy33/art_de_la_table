@@ -1,7 +1,10 @@
+import { servicesMetadata } from '@/lib/metadata'
+export const metadata = servicesMetadata
+
 export default function Services() {
   return (
     <main className="services">
-      
+
       {/* Hero Section: L'Excellence du Service */}
       <section className="services-hero container">
         <div className="services-hero__grid">
@@ -15,12 +18,12 @@ export default function Services() {
               Nous accompagnons les professionnels de l'hôtellerie et de la restauration dans la création d'expériences mémorables à travers un service de conseil et de sourcing d'exception.
             </p>
           </div>
-          
+
           <div className="services-hero__visual">
             <div className="image-wrapper ambient-shadow">
-              <img 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ5PNqO_AaFoGCbtlXLjGs32q5alLxEyjPQtYyKeYJbg286H7R657pM35LhtanWv5jBMdiE5v6TQteL_yMcPKAtYiyZo5kr21IEjB8ppC0Go7-PZjYPVLGJ8ezWfnO_XlgyUbCJP33NfUQmnbvhDEYuVRmf-qYUBQySBy4p34f-f7fgV2QgzIEmwMPqJVOyfPnq9mozp--wsUhT_6h2xGpdZfZaqgkqExJsh7QWmc5c8PcWIdS0i-5oCXdoJFEe_p4svcN8oEuQVtQ" 
-                alt="Elegant table setting" 
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ5PNqO_AaFoGCbtlXLjGs32q5alLxEyjPQtYyKeYJbg286H7R657pM35LhtanWv5jBMdiE5v6TQteL_yMcPKAtYiyZo5kr21IEjB8ppC0Go7-PZjYPVLGJ8ezWfnO_XlgyUbCJP33NfUQmnbvhDEYuVRmf-qYUBQySBy4p34f-f7fgV2QgzIEmwMPqJVOyfPnq9mozp--wsUhT_6h2xGpdZfZaqgkqExJsh7QWmc5c8PcWIdS0i-5oCXdoJFEe_p4svcN8oEuQVtQ"
+                alt="Elegant table setting"
               />
             </div>
             {/* Badge */}
@@ -116,7 +119,7 @@ export default function Services() {
               <button className="btn-secondary mt-6">Demander une présentation</button>
             </div>
           </div>
-          
+
           <div className="process-steps">
             {[
               { num: "01", title: "Consultation & Vision", desc: "Définition de vos besoins esthétiques et contraintes budgétaires. Nous écoutons votre histoire culinaire pour en transcrire les codes sur la table." },

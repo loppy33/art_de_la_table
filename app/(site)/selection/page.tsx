@@ -1,7 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
+
+import { selectionMetadata } from '@/lib/metadata'
+export const metadata = selectionMetadata
 
 interface Artisan {
   id: string

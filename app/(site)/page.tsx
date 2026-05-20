@@ -2,6 +2,10 @@ import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 import NewsletterForm from "../components/NewsletterForm"
 
+import { homeMetadata } from '@/lib/metadata'
+export const metadata = homeMetadata
+
+
 async function getData() {
   const [testimonials, content] = await Promise.all([
     prisma.testimonial.findMany({

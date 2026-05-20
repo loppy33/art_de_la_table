@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { clientMystereMetadata } from '@/lib/metadata'
+export const metadata = clientMystereMetadata
+
 export default function ClientMystere() {
   return (
     <main className="mystery-shopper">

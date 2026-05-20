@@ -1,3 +1,6 @@
+import { mentionsMetadata } from '@/lib/metadata'
+export const metadata = mentionsMetadata
+
 export default function MentionsLegales() {
   return (
     <main className="legal-notices">

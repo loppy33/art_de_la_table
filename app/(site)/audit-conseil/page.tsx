@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { auditMetadata } from '@/lib/metadata'
+export const metadata = auditMetadata
+
 export default function AuditConseil() {
   return (
     <main className="audit-conseil">
