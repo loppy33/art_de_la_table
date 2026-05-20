@@ -1,6 +1,16 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import { prisma } from '@/lib/prisma'
 
-export default function Footer() {
+async function getContacts() {
+  const rows = await prisma.siteContent.findMany({
+    where: { key: { in: ['contact_address', 'contact_phone', 'contact_email'] } },
+  })
+  return Object.fromEntries(rows.map(r => [r.key, r.value]))
+}
+
+export default async function Footer() {
+  const c = await getContacts()
+
   return (
     <footer className="footer">
       <div className="container footer__grid">
@@ -31,14 +41,34 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4 className="label-md">Contact</h4>
-          <p>75001 Paris, France</p>
-          <p>+33 (0)1 23 45 67 89</p>
-          <p>contact@artdelatable.fr</p>
+          {c.contact_address && <p>{c.contact_address}</p>}
+          {c.contact_phone && (
+            <p>
+              <a href={`tel:${c.contact_phone.replace(/\s/g, '')}`}>
+                {c.contact_phone}
+              </a>
+            </p>
+          )}
+          {c.contact_email && (
+            <p>
+              <a href={`mailto:${c.contact_email}`}>
+                {c.contact_email}
+              </a>
+            </p>
+          )}
+          {!c.contact_address && !c.contact_phone && !c.contact_email && (
+            <>
+              <p>75001 Paris, France</p>
+              <p>+33 (0)1 23 45 67 89</p>
+              <p>contact@artdelatable.fr</p>
+            </>
+          )}
         </div>
       </div>
+
       <div className="footer__bottom">
-        <p>© 2026 L'Art de la Table à la Française. Tous droits réservés.</p>
+        <p>© {new Date().getFullYear()} L'Art de la Table à la Française. Tous droits réservés.</p>
       </div>
     </footer>
-  );
+  )
 }
