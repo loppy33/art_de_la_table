@@ -27,6 +27,9 @@ export default async function About() {
 
   const storiedArtisans = artisans.filter(a => a.history && a.history.trim().length > 0)
 
+  // Helpers avec fallbacks
+  const v = (key: string, fallback: string) => c[key]?.trim() || fallback
+
   return (
     <main className="about">
 
@@ -43,10 +46,10 @@ export default async function About() {
           <div className="max-w-xl text-white">
             <span className="label-md label-gold-bg">L'Héritage de l'ATF</span>
             <h1 className="display-lg text-white">
-              {c.about_title ?? "Le raffinement à la française."}
+              {v('about_title', 'Le raffinement à la française.')}
             </h1>
             <p className="about-hero__desc">
-              {c.about_text ?? "L'Art de la Table à la Française (ATF) n'est pas qu'un service, c'est une célébration de l'art de vivre. Nous redonnons ses lettres de noblesse à l'accueil, où chaque détail devient une émotion."}
+              {v('about_text', "L'Art de la Table à la Française (ATF) n'est pas qu'un service, c'est une célébration de l'art de vivre. Nous redonnons ses lettres de noblesse à l'accueil, où chaque détail devient une émotion.")}
             </p>
           </div>
         </div>
@@ -61,16 +64,20 @@ export default async function About() {
               <div className="mission-item">
                 <div className="mission-item__header">
                   <span className="material-symbols-outlined icon-gold">history_edu</span>
-                  <h3 className="headline-md">Préserver le Patrimoine</h3>
+                  <h3 className="headline-md">
+                    {v('about_mission1_title', 'Préserver le Patrimoine')}
+                  </h3>
                 </div>
-                <p>Nous œuvrons pour que les savoir-faire ancestraux de la porcelaine de Limoges, de la cristallerie et de l'orfèvrerie ne tombent jamais dans l'oubli, mais brillent dans le présent.</p>
+                <p>{v('about_mission1_text', "Nous œuvrons pour que les savoir-faire ancestraux de la porcelaine de Limoges, de la cristallerie et de l'orfèvrerie ne tombent jamais dans l'oubli, mais brillent dans le présent.")}</p>
               </div>
               <div className="mission-item">
                 <div className="mission-item__header">
                   <span className="material-symbols-outlined icon-gold">workspace_premium</span>
-                  <h3 className="headline-md">L'Excellence du Moment</h3>
+                  <h3 className="headline-md">
+                    {v('about_mission2_title', "L'Excellence du Moment")}
+                  </h3>
                 </div>
-                <p>Transformer chaque repas en un événement mémorable. Notre mission est d'élever l'ordinaire vers l'extraordinaire par la mise en scène et le choix des matières.</p>
+                <p>{v('about_mission2_text', "Transformer chaque repas en un événement mémorable. Notre mission est d'élever l'ordinaire vers l'extraordinaire par la mise en scène et le choix des matières.")}</p>
               </div>
             </div>
           </div>
@@ -99,7 +106,7 @@ export default async function About() {
                 <span className="label-md text-gold block mb-4">Valeur Fondamentale</span>
                 <h3 className="display-sm">Authenticité sans compromis</h3>
                 <p className="text-lg mt-4">
-                  Chaque pièce sélectionnée par l'ATF porte en elle l'histoire d'un atelier, d'un terroir et d'un geste maintes fois répété. Nous refusons l'uniformisation au profit du caractère unique.
+                  {v('about_philosophy_text', "Chaque pièce sélectionnée par l'ATF porte en elle l'histoire d'un atelier, d'un terroir et d'un geste maintes fois répété. Nous refusons l'uniformisation au profit du caractère unique.")}
                 </p>
               </div>
               <div className="card-stats">
@@ -136,31 +143,29 @@ export default async function About() {
               className="ambient-shadow"
             />
             <div className="floating-quote ambient-shadow">
-              <p>
-                {c.about_history
-                  ? `"${c.about_history.slice(0, 100)}…"`
-                  : '"Notre expertise est le fruit de 20 ans de passion pour les métiers d\'art."'}
-              </p>
+              <p>"{v('about_history', "Notre expertise est le fruit de 20 ans de passion pour les métiers d'art.")}"</p>
             </div>
           </div>
           <div className="expertise-text">
-            <h2 className="headline-lg">Une expertise d'exception</h2>
+            <h2 className="headline-lg">
+              {v('about_expertise_title', "Une expertise d'exception")}
+            </h2>
             <p className="text-lg mb-8">
-              L'équipe de l'ATF est composée de conservateurs de styles, de décorateurs et de spécialistes de l'étiquette. Nous ne nous contentons pas de louer du matériel ; nous conseillons sur l'accord parfait entre le menu, le lieu et l'ambiance.
+              {v('about_expertise_text', "L'équipe de l'ATF est composée de conservateurs de styles, de décorateurs et de spécialistes de l'étiquette. Nous ne nous contentons pas de louer du matériel ; nous conseillons sur l'accord parfait entre le menu, le lieu et l'ambiance.")}
             </p>
             <ul className="expertise-list">
               <li>
                 <span className="material-symbols-outlined icon-gold">check_circle</span>
                 <div>
-                  <strong>Conseil en Scénographie</strong>
-                  <p>Création d'univers visuels sur-mesure.</p>
+                  <strong>{v('about_expertise_item1', 'Conseil en Scénographie')}</strong>
+                  <p>{v('about_expertise_item1_text', "Création d'univers visuels sur-mesure.")}</p>
                 </div>
               </li>
               <li>
                 <span className="material-symbols-outlined icon-gold">check_circle</span>
                 <div>
-                  <strong>Sourcing Exclusif</strong>
-                  <p>Accès à des collections privées et des séries limitées.</p>
+                  <strong>{v('about_expertise_item2', 'Sourcing Exclusif')}</strong>
+                  <p>{v('about_expertise_item2_text', "Accès à des collections privées et des séries limitées.")}</p>
                 </div>
               </li>
             </ul>
@@ -171,7 +176,6 @@ export default async function About() {
       {/* Section 5: Partenaires */}
       <section className="about-partners bg-low">
         <div className="container">
-
           <div className="partners-header">
             <div className="max-w-xl">
               <h2 className="headline-lg">Nos Partenaires Artisans</h2>
@@ -183,7 +187,6 @@ export default async function About() {
             </Link>
           </div>
 
-          {/* Grid logos */}
           <div className="partners-grid">
             {displayArtisans.map((artisan) => (
               <div key={artisan.id} className="partner-card ambient-shadow">
@@ -202,19 +205,16 @@ export default async function About() {
             ))}
           </div>
 
-          {/* Histoires éditoriales */}
           {storiedArtisans.length > 0 && (
             <div className="artisans-stories">
               {storiedArtisans.map((artisan) => (
                 <div key={artisan.id} className="artisan-story">
-
                   <div className={`artisan-story__visual${!artisan.logo ? ' artisan-story__visual--empty' : ''}`}>
                     {artisan.logo
                       ? <img src={artisan.logo} alt={artisan.name} />
                       : <span className="material-symbols-outlined">storefront</span>
                     }
                   </div>
-
                   <div className="artisan-story__content">
                     {artisan.featured && (
                       <span className="artisan-story__featured-label">
@@ -232,12 +232,10 @@ export default async function About() {
                       </span>
                     )}
                   </div>
-
                 </div>
               ))}
             </div>
           )}
-
         </div>
       </section>
 

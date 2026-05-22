@@ -1,11 +1,45 @@
+import { prisma } from "@/lib/prisma"
+import Link from "next/link"
+
 import { servicesMetadata } from '@/lib/metadata'
 export const metadata = servicesMetadata
 
-export default function Services() {
+async function getContent() {
+  const rows = await prisma.siteContent.findMany()
+  return Object.fromEntries(rows.map(r => [r.key, r.value]))
+}
+
+export default async function Services() {
+  const c = await getContent()
+  const v = (key: string, fallback: string) => c[key]?.trim() || fallback
+
+  const steps = [
+    {
+      num: "01",
+      title: v('services_step1_title', 'Consultation & Vision'),
+      desc:  v('services_step1_text',  "Définition de vos besoins esthétiques et contraintes budgétaires. Nous écoutons votre histoire culinaire pour en transcrire les codes sur la table."),
+    },
+    {
+      num: "02",
+      title: v('services_step2_title', 'Sélection des Manufactures'),
+      desc:  v('services_step2_text',  "Établissement d'un catalogue sur-mesure parmi nos partenaires EPV (Entreprise du Patrimoine Vivant). Présentation d'échantillons en situation réelle."),
+    },
+    {
+      num: "03",
+      title: v('services_step3_title', 'Logistique & Déploiement'),
+      desc:  v('services_step3_text',  "Gestion complète de la commande à la livraison. Nous assurons un contrôle qualité rigoureux à chaque réception de marchandise."),
+    },
+    {
+      num: "04",
+      title: v('services_step4_title', 'Accompagnement pérenne'),
+      desc:  v('services_step4_text',  "Suivi des réassorts et mise à jour des collections au fil des saisons. Nous restons à vos côtés pour faire évoluer votre identité."),
+    },
+  ]
+
   return (
     <main className="services">
 
-      {/* Hero Section: L'Excellence du Service */}
+      {/* Hero */}
       <section className="services-hero container">
         <div className="services-hero__grid">
           <div className="services-hero__content">
@@ -14,11 +48,8 @@ export default function Services() {
               L'art de sublimer <br />
               <span className="text-secondary" style={{ fontStyle: 'italic' }}>votre établissement.</span>
             </h1>
-            <p>
-              Nous accompagnons les professionnels de l'hôtellerie et de la restauration dans la création d'expériences mémorables à travers un service de conseil et de sourcing d'exception.
-            </p>
+            <p>{v('services_hero_text', "Nous accompagnons les professionnels de l'hôtellerie et de la restauration dans la création d'expériences mémorables à travers un service de conseil et de sourcing d'exception.")}</p>
           </div>
-
           <div className="services-hero__visual">
             <div className="image-wrapper ambient-shadow">
               <img
@@ -26,7 +57,6 @@ export default function Services() {
                 alt="Elegant table setting"
               />
             </div>
-            {/* Badge */}
             <div className="services-hero__badge ambient-shadow">
               <p className="badge-value">100%</p>
               <p className="label-md">Sourcing Français</p>
@@ -35,7 +65,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Section: The Bento Grid of Expertise */}
+      {/* Bento Grid */}
       <section className="services-bento bg-low">
         <div className="container">
           <div className="services-bento__header">
@@ -47,12 +77,11 @@ export default function Services() {
           </div>
 
           <div className="bento-grid">
-            {/* Service 1: Sourcing */}
             <div className="bento-card card-large">
               <div className="bento-card__content">
                 <span className="material-symbols-outlined icon-gold">inventory_2</span>
-                <h3 className="headline-md">Sourcing 100% Français</h3>
-                <p>Accès exclusif aux meilleures manufactures de l'Hexagone. Nous dénichons pour vous la porcelaine de Limoges, l'argenterie d'orfèvres et le cristal de tradition pour une table authentique.</p>
+                <h3 className="headline-md">{v('services_sourcing_title', 'Sourcing 100% Français')}</h3>
+                <p>{v('services_sourcing_text', "Accès exclusif aux meilleures manufactures de l'Hexagone. Nous dénichons pour vous la porcelaine de Limoges, l'argenterie d'orfèvres et le cristal de tradition pour une table authentique.")}</p>
                 <div className="tags">
                   <span className="tag">Porcelaine</span>
                   <span className="tag">Verrerie</span>
@@ -62,72 +91,54 @@ export default function Services() {
               </div>
             </div>
 
-            {/* Service 2: Audit */}
             <div className="bento-card card-primary">
               <div className="bento-card__content relative-z">
                 <span className="material-symbols-outlined icon-light">analytics</span>
-                <h3 className="headline-md text-white">Audit & Inventaire</h3>
-                <p className="text-light">Optimisation de vos stocks et analyse de l'usure de votre parc. Nous évaluons la cohérence esthétique et fonctionnelle de vos équipements actuels.</p>
+                <h3 className="headline-md text-white">{v('services_audit_title', 'Audit & Inventaire')}</h3>
+                <p className="text-light">{v('services_audit_text', "Optimisation de vos stocks et analyse de l'usure de votre parc. Nous évaluons la cohérence esthétique et fonctionnelle de vos équipements actuels.")}</p>
               </div>
               <span className="material-symbols-outlined bg-icon">assignment_turned_in</span>
             </div>
 
-            {/* Service 3: Accompagnement */}
             <div className="bento-card card-standard">
               <div className="bento-card__content">
                 <span className="material-symbols-outlined icon-gold">architecture</span>
-                <h3 className="headline-md">Conseil en Design</h3>
-                <p>Création d'une identité visuelle propre à votre établissement. Nous marions les textures et les formes pour sublimer chaque plat.</p>
+                <h3 className="headline-md">{v('services_design_title', 'Conseil en Design')}</h3>
+                <p>{v('services_design_text', "Création d'une identité visuelle propre à votre établissement. Nous marions les textures et les formes pour sublimer chaque plat.")}</p>
                 <ul className="checklist">
-                  <li>
-                    <span className="material-symbols-outlined icon-gold">check_circle</span>
-                    Plan de table personnalisé
-                  </li>
-                  <li>
-                    <span className="material-symbols-outlined icon-gold">check_circle</span>
-                    Harmonie des couleurs
-                  </li>
-                  <li>
-                    <span className="material-symbols-outlined icon-gold">check_circle</span>
-                    Formation des équipes
-                  </li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Plan de table personnalisé</li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Harmonie des couleurs</li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Formation des équipes</li>
                 </ul>
               </div>
             </div>
 
-            {/* Service 4: Expertise */}
             <div className="bento-card card-wide-image">
               <div className="card-image">
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvsCMJdG3lx8dLmtilh9XuwD8iy2FbtwqlLK7ZdJefNxDK4btETd7KMALA8o1OILIMLrquXFllopeqj_5paXaknP3s9Nja__ycusderF_H28ON85R3j_GgC_g_QvkJVxndbamW31xJ9avsEP1FJnFaVLEFhMFjdtcY7dN-Dsan2Zr6npX45CVF4aYnHC18oZN1biM2q7_wo9LJAw4zfSXTHUuEs2TgAejiFwpBXkA6iB-uJUvhfsC-w-ALs8Utkaleccf86rl9QK3Z" alt="Professional consultant" />
               </div>
               <div className="bento-card__content">
-                <h3 className="headline-md">Expertise Technique</h3>
-                <p>Recommandations basées sur la durabilité des matériaux et leur résistance aux cycles de lavage intensifs du secteur CHR. Alliez élégance et rentabilité opérationnelle.</p>
+                <h3 className="headline-md">{v('services_tech_title', 'Expertise Technique')}</h3>
+                <p>{v('services_tech_text', "Recommandations basées sur la durabilité des matériaux et leur résistance aux cycles de lavage intensifs du secteur CHR. Alliez élégance et rentabilité opérationnelle.")}</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The Process Section: High Contrast Editorial */}
+      {/* Process */}
       <section className="services-process container">
         <div className="process-grid">
           <div className="process-header">
             <div className="sticky-content">
               <h2 className="display-lg">L'excellence <br />étape par étape</h2>
               <p>Notre méthodologie garantit une transformation fluide de votre salle de restaurant, du premier audit à la mise en place finale.</p>
-              <button className="btn-secondary mt-6">Demander une présentation</button>
+              <Link href="/rendez-vous" className="btn-secondary mt-6">Demander une présentation</Link>
             </div>
           </div>
-
           <div className="process-steps">
-            {[
-              { num: "01", title: "Consultation & Vision", desc: "Définition de vos besoins esthétiques et contraintes budgétaires. Nous écoutons votre histoire culinaire pour en transcrire les codes sur la table." },
-              { num: "02", title: "Sélection des Manufactures", desc: "Établissement d'un catalogue sur-mesure parmi nos partenaires EPV (Entreprise du Patrimoine Vivant). Présentation d'échantillons en situation réelle." },
-              { num: "03", title: "Logistique & Déploiement", desc: "Gestion complète de la commande à la livraison. Nous assurons un contrôle qualité rigoureux à chaque réception de marchandise." },
-              { num: "04", title: "Accompagnement pérenne", desc: "Suivi des réassorts et mise à jour des collections au fil des saisons. Nous restons à vos côtés pour faire évoluer votre identité." }
-            ].map((step, idx) => (
-              <div key={idx} className="step-item">
+            {steps.map((step) => (
+              <div key={step.num} className="step-item">
                 <div className="step-number">{step.num}</div>
                 <div className="step-content">
                   <h4 className="headline-sm">{step.title}</h4>
@@ -139,7 +150,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Final CTA Section: Glassmorphism Card */}
+      {/* CTA */}
       <section className="services-cta container">
         <div className="cta-card">
           <div className="cta-card__bg">
@@ -154,13 +165,13 @@ export default function Services() {
               Chaque détail compte dans l'expérience client. Nos experts sont prêts à concevoir avec vous une atmosphère qui reflète l'excellence de votre service.
             </p>
             <div className="cta-actions">
-              <button className="btn-primary">Demander un devis</button>
-              <button className="btn-glass">Voir nos références</button>
+              <Link href="/contact" className="btn-primary">Demander un devis</Link>
+              <Link href="/selection" className="btn-glass">Voir notre sélection</Link>
             </div>
           </div>
         </div>
       </section>
 
     </main>
-  );
+  )
 }
