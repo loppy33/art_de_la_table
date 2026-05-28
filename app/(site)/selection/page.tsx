@@ -25,6 +25,7 @@ interface Machine {
   description?: string
   image?: string
   highlights: string[]
+  specs?: Record<string, any> 
 }
 
 type Tab =
@@ -313,50 +314,66 @@ export default function Selection() {
               ))}
 
             {/* MACHINES */}
-            {filtered.machines.map((machine, i) => (
-              <article
-                key={machine.id}
-                className={`product-card ${
-                  i === 0
-                    ? 'card-span-12'
-                    : 'card-span-4'
-                }`}
-              >
-                <div className="product-card__image aspect-square">
-                  {machine.image ? (
-                    <img
-                      src={machine.image}
-                      alt={machine.name}
-                    />
-                  ) : (
-                    <div className="product-card__placeholder">
-                      machine
-                    </div>
-                  )}
-                </div>
-
-                <div className="product-card__info">
-                  <h3>{machine.name}</h3>
-
-                  {machine.description && (
-                    <p>{machine.description}</p>
-                  )}
-
-                  {Array.isArray(machine.highlights) &&
-                    machine.highlights.length > 0 && (
-                      <ul>
-                        {machine.highlights.map(
-                          (highlight, index) => (
-                            <li key={index}>
-                              {highlight}
-                            </li>
-                          )
-                        )}
-                      </ul>
+  {filtered.machines.map((machine, i) => {
+              // Делаем первую карточку большой и горизонтальной
+              const isLarge = i === 0;
+              
+              return (
+                <article
+                  key={machine.id}
+                  className={`product-card ${
+                    isLarge ? 'card-span-12 feature-horizontal' : 'card-span-4'
+                  }`}
+                >
+                  <div className={`product-card__image ${isLarge ? 'feature-image' : 'aspect-square'}`}>
+                    {machine.image ? (
+                      <img
+                        src={machine.image}
+                        alt={machine.name}
+                      />
+                    ) : (
+                      <div className="product-card__placeholder">
+                        <span className="material-symbols-outlined">precision_manufacturing</span>
+                      </div>
                     )}
-                </div>
-              </article>
-            ))}
+                  </div>
+
+                  <div className={`product-card__info flex-column-full ${isLarge ? 'feature-text' : ''}`}>
+                    <h3>{machine.name}</h3>
+
+                    {machine.description && (
+                      <p>{machine.description}</p>
+                    )}
+
+                    {Array.isArray(machine.highlights) &&
+                      machine.highlights.length > 0 && (
+                        <ul className="machine-highlights">
+                          {machine.highlights.map(
+                            (highlight, index) => (
+                              <li key={index}>
+                                <span className="material-symbols-outlined">check_circle</span>
+                                {highlight}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      )}
+
+                    {/* ВЫВОД ХАРАКТЕРИСТИК (SPECS) */}
+                    {machine.specs && Object.keys(machine.specs).length > 0 && (
+                      <div className="machine-specs">
+                        {Object.entries(machine.specs).map(([key, value]) => (
+                          <div className="spec-item" key={key}>
+                            <span className="spec-label">{key}</span>
+                            <span className="spec-value">{String(value)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              )
+            })}
           </div>
         )}
       </section>
