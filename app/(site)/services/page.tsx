@@ -17,22 +17,22 @@ export default async function Services() {
     {
       num: "01",
       title: v('services_step1_title', 'Consultation & Vision'),
-      desc:  v('services_step1_text',  "Définition de vos besoins esthétiques et contraintes budgétaires. Nous écoutons votre histoire culinaire pour en transcrire les codes sur la table."),
+      desc: v('services_step1_text', "Définition de vos besoins esthétiques et contraintes budgétaires. Nous écoutons votre histoire culinaire pour en transcrire les codes sur la table."),
     },
     {
       num: "02",
       title: v('services_step2_title', 'Sélection des Manufactures'),
-      desc:  v('services_step2_text',  "Établissement d'un catalogue sur-mesure parmi nos partenaires EPV (Entreprise du Patrimoine Vivant). Présentation d'échantillons en situation réelle."),
+      desc: v('services_step2_text', "Établissement d'un catalogue sur-mesure parmi nos partenaires EPV (Entreprise du Patrimoine Vivant). Présentation d'échantillons en situation réelle."),
     },
     {
       num: "03",
       title: v('services_step3_title', 'Logistique & Déploiement'),
-      desc:  v('services_step3_text',  "Gestion complète de la commande à la livraison. Nous assurons un contrôle qualité rigoureux à chaque réception de marchandise."),
+      desc: v('services_step3_text', "Gestion complète de la commande à la livraison. Nous assurons un contrôle qualité rigoureux à chaque réception de marchandise."),
     },
     {
       num: "04",
       title: v('services_step4_title', 'Accompagnement pérenne'),
-      desc:  v('services_step4_text',  "Suivi des réassorts et mise à jour des collections au fil des saisons. Nous restons à vos côtés pour faire évoluer votre identité."),
+      desc: v('services_step4_text', "Suivi des réassorts et mise à jour des collections au fil des saisons. Nous restons à vos côtés pour faire évoluer votre identité."),
     },
   ]
 
@@ -70,8 +70,8 @@ export default async function Services() {
         <div className="container">
           <div className="services-bento__header">
             <div>
-              <h2 className="headline-lg">Une expertise sur-mesure</h2>
-              <p>Nos services sont pensés pour répondre aux exigences les plus élevées des restaurateurs, hôteliers et directeurs d'exploitation.</p>
+              <h2 className="headline-lg">Une réponse structurée aux enjeux du CHR</h2>
+              <p>ATF agit comme un chef d'orchestre entre besoin client, savoir-faire artisanaux et contraintes d'exploitation. L'objectif n'est pas de pousser un catalogue, mais de construire la combinaison la plus juste pour chaque lieu.</p>
             </div>
             <div className="decorative-line"></div>
           </div>
@@ -106,9 +106,9 @@ export default async function Services() {
                 <h3 className="headline-md">{v('services_design_title', 'Conseil en Design')}</h3>
                 <p>{v('services_design_text', "Création d'une identité visuelle propre à votre établissement. Nous marions les textures et les formes pour sublimer chaque plat.")}</p>
                 <ul className="checklist">
-                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Plan de table personnalisé</li>
-                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Harmonie des couleurs</li>
-                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Formation des équipes</li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Arbitrages & sélection</li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Cohérence entre les pièces</li>
+                  <li><span className="material-symbols-outlined icon-gold">check_circle</span>Calibrage de la réponse</li>
                 </ul>
               </div>
             </div>
@@ -131,9 +131,8 @@ export default async function Services() {
         <div className="process-grid">
           <div className="process-header">
             <div className="sticky-content">
-              <h2 className="display-lg">L'excellence <br />étape par étape</h2>
-              <p>Notre méthodologie garantit une transformation fluide de votre salle de restaurant, du premier audit à la mise en place finale.</p>
-              <Link href="/rendez-vous" className="btn-secondary mt-6">Demander une présentation</Link>
+              <h2 className="display-lg">Comment ATF <br />intervient...</h2>
+              <p>Le modèle est simple à comprendre pour le client : partir du besoin, activer les bons partenaires, puis sécuriser une réponse qui tienne autant en image qu'en usage.</p>              <Link href="/rendez-vous" className="btn-secondary mt-6">Demander une présentation</Link>
             </div>
           </div>
           <div className="process-steps">
@@ -158,12 +157,11 @@ export default async function Services() {
           </div>
           <div className="cta-card__content">
             <h2 className="display-lg text-white">
-              Donnez à votre établissement <br />
-              <span className="text-gold">la table qu'il mérite.</span>
+              Parce que la table <br />
+              <span className="text-gold">ne se limite pas à un simple dressage.</span>
             </h2>
             <p className="text-light">
-              Chaque détail compte dans l'expérience client. Nos experts sont prêts à concevoir avec vous une atmosphère qui reflète l'excellence de votre service.
-            </p>
+              Matières, formes, usage et cohérence globale viennent structurer la perception du client et renforcer le positionnement de l'établissement.            </p>
             <div className="cta-actions">
               <Link href="/contact" className="btn-primary">Demander un devis</Link>
               <Link href="/selection" className="btn-glass">Voir notre sélection</Link>

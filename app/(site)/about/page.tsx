@@ -19,11 +19,11 @@ export default async function About() {
   const displayArtisans = artisans.length > 0
     ? artisans
     : [
-        { id: "1", name: "Porcelaine d'Artois", logo: null, history: null, featured: false, slug: "" },
-        { id: "2", name: "Cristal de Lorraine", logo: null, history: null, featured: false, slug: "" },
-        { id: "3", name: "Lin de Normandie", logo: null, history: null, featured: false, slug: "" },
-        { id: "4", name: "Orfèvrerie Royale", logo: null, history: null, featured: false, slug: "" },
-      ]
+      { id: "1", name: "Atelier Riou", logo: null, history: null, featured: false, slug: "" },
+      { id: "2", name: "Le Jacquard Français", logo: null, history: null, featured: false, slug: "" },
+      { id: "3", name: "Emaï Poterie", logo: null, history: null, featured: false, slug: "" },
+      { id: "4", name: "WoodEpoxySoulArt", logo: null, history: null, featured: false, slug: "" },
+    ]
 
   const storiedArtisans = artisans.filter(a => a.history && a.history.trim().length > 0)
 
@@ -123,9 +123,9 @@ export default async function About() {
             </div>
             <div className="bento-card card-primary">
               <span className="material-symbols-outlined icon-gold lg-icon">auto_awesome</span>
-              <h3 className="headline-md text-white mt-auto">Le Sens du Détail</h3>
+              <h3 className="headline-md text-white mt-auto">Une signature et une émotion</h3>
               <p className="text-light">
-                C'est l'inclinaison d'un verre, le pliage d'une serviette en lin, ou l'éclat d'une argenterie polie qui créent la magie d'une réception réussie.
+                À la française, la table n'est pas seulement dressée... Elle raconte une Histoire. Plus qu'un simple élément décoratif, la table devient un véritable langage.
               </p>
             </div>
           </div>
@@ -179,8 +179,7 @@ export default async function About() {
           <div className="partners-header">
             <div className="max-w-xl">
               <h2 className="headline-lg">Nos Partenaires Artisans</h2>
-              <p>Nous travaillons main dans la main avec les plus prestigieuses maisons françaises, détenant souvent le label "Entreprise du Patrimoine Vivant".</p>
-            </div>
+              <p>Une sélection d'ateliers capables d'apporter une vraie identité de la table, avec une logique de matière, de signature et d'usage professionnel.</p>            </div>
             <Link href="/selection" className="btn-text link-with-arrow">
               Voir la collection
               <span className="material-symbols-outlined">arrow_forward</span>

@@ -32,7 +32,7 @@ export default function Header() {
     <>
       <header className="header glassmorphism">
         <nav className="header__nav container">
-          <div className="header__logo"><Link href="/">L'Art de la Table</Link></div>
+          <div className="header__logo"><Link href="/">L'Art de la Table à la Française</Link></div>
 
           {/* Desktop nav */}
           <div className="header__links">

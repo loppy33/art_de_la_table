@@ -47,11 +47,11 @@ export default async function Home() {
 
       {/* Partners Logos */}
       <section className="partners container">
-        <span>PRESTIGE</span>
-        <span>HÉRITAGE</span>
-        <span>ÉCLAT</span>
-        <span>SAVOIR</span>
-        <span>MAISON</span>
+        <span>ATELIER RIOU</span>
+        <span>LE JACQUARD FRANÇAIS</span>
+        <span>EMAÏ POTERIE</span>
+        <span>SUZANT CERAMICS</span>
+        <span>WOOD EPOXY SOUL ART</span>
       </section>
 
       {/* Mobilier Section */}
@@ -61,9 +61,9 @@ export default async function Home() {
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF22UAvo7B6eVgJvvJNmhpF2jmkpb-WgBwDUiAeYDvZ2jRnEBjWdsnntulw6Kla4IzyxhgrQ45MeAjMITc_Rt93yOA4CUYXcE0fZygsLdTa08dbYrRcZOp4EXvIOQxVbQDRO1ZAR4Oz9sbBc_YlKny0OCa_YpxW3tDOMkozdD0HwXBvZ4p1MbaecmWZwGGVMPJD62gUsCZm02LUAVbdeagHV1KOzMvXl4qXAVQSK_Ruh_flNAi6AMEpjh5TNqwWHK90YSRtLhFavfE" alt="French dining room" className="ambient-shadow" />
         </div>
         <div className="mobilier__text">
-          <span className="label-md label-gold">Excellence Manufacturière</span>
-          <h2 className="headline-lg">Le Mobilier : 100% Made in France</h2>
-          <p>Nous collaborons avec les meilleurs artisans de l'hexagone pour concevoir des pièces qui traversent le temps. Notre savoir-faire français se reflète dans chaque courbe de bois et chaque couture de textile, garantissant une élégance pérenne à votre établissement.</p>
+          <span className="label-md label-gold">Mobilier sur-mesure</span>
+          <h2 className="headline-lg">Bois massif & résine</h2>
+          <p>Quand la table elle-même devient un signal. Des pièces fortes pour structurer un lieu et prolonger son identité jusque dans le mobilier. Une approche à la fois artistique et technique, mêlant sensibilité créative et maîtrise des matériaux.</p>
           <Link href="/selection" className="btn-primary">Découvrir notre sélection</Link>
         </div>
       </section>
@@ -72,15 +72,15 @@ export default async function Home() {
       <section className="section-audit bg-low">
         <div className="container audit__grid">
           <div className="audit__text">
-            <span className="label-md label-gold">Accompagnement Stratégique</span>
-            <h2 className="headline-lg">F&B Paris : Audit & Expertise</h2>
-            <p>De Paris à la Côte d'Azur, nos experts analysent vos flux opérationnels pour sublimer l'expérience client. Nous intervenons partout en France pour transformer vos points de vente en destinations gastronomiques incontournables.</p>
+            <span className="label-md label-gold">Expertise opérationnelle CHR</span>
+            <h2 className="headline-lg">Organisation, standards et exécution</h2>
+            <p>Parce qu'un projet ne se joue pas uniquement dans l'esthétique, mais dans sa capacité à fonctionner au quotidien. Une expertise pensée pour structurer l'organisation, optimiser les standards et garantir une expérience fluide et maîtrisée.</p>
             <Link href="/services" className="btn-secondary">Découvrir nos services</Link>
           </div>
           <div className="audit__card">
             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFeHQh4u3zF7bHrZqXaMKaDQ0fnyhYito039906pMwUDJwU-2E1uJJLfEpX_21okhHfnW3j6SoxxL13wBJuABH91GoKF0D8JVsNveE0yx0Rw4JKG7vThOv4UbvJKn2G_c_eQvSSdQDxTfognTtzn6s7YVzCRXVbfSYjO-wJwN4MlQJ5bu9w5ccCPboiivboA-ASQKARUz8dRLiOdNThroY8O7gHO2DPSglq_cNi_8nXEHyTp71Y3cdQ_GE6T00ABxwUwC3IRRbVU-u" alt="Professional consultant" />
             <div className="audit__badge ambient-shadow">
-              <p>+15 ans d'expertise</p>
+              <p>Audit terrain & méthodes</p>
             </div>
           </div>
         </div>
@@ -90,14 +90,13 @@ export default async function Home() {
       <section className="section-machines container">
         <div className="section-header text-center">
           <span className="label-md label-gold">Performance Opérationnelle</span>
-          <h2 className="headline-lg">Éclat de France : L'Innovation</h2>
+          <h2 className="headline-lg">Équipements pour le CHR</h2>
         </div>
         <div className="machines__grid">
           <div className="machine__card-large bg-low">
             <div className="machine__content">
-              <h3>Optimisation des coûts</h3>
-              <p>Une technologie de pointe conçue pour réduire vos consommations et maximiser la durée de vie de votre matériel.</p>
-              <div className="machine__actions">
+              <h3>Essuyeurs à couverts et verres</h3>
+              <p>Jusqu'à 20 000 couverts par heure. Séchage et polissage en un seul passage avec traitement antibactérien UV. Résultat parfait sans traces.</p><div className="machine__actions">
                 <Link href="/contact" className="btn-primary">Demander un devis</Link>
                 <Link href="/about" className="btn-text">Plus d'informations</Link>
               </div>
@@ -109,9 +108,8 @@ export default async function Home() {
           <div className="machine__card-small">
             <span className="material-symbols-outlined icon-gold">timer</span>
             <div>
-              <h3>Gain de temps</h3>
-              <p>Libérez vos équipes des tâches répétitives pour qu'elles se concentrent sur l'essentiel : l'accueil de vos convives.</p>
-            </div>
+              <h3>Rafraîchisseurs de bouteilles</h3>
+              <p>Deux à trois bouteilles parfaitement rafraîchies en 5 minutes et des verres givrés en 20 secondes. Idéal pour les fortes cadences.</p>            </div>
           </div>
         </div>
       </section>
@@ -120,47 +118,47 @@ export default async function Home() {
       <section className="section-why-us">
         <div className="why-us__bg-skew"></div>
         <div className="container why-us__grid">
+
           <div className="why-us__text">
-            <h2 className="display-lg">Pourquoi travailler avec nous ?</h2>
+            <h2 className="display-lg">Une philosophie en trois piliers</h2>
             <div className="why-us__features">
               <div className="feature">
-                <div className="feature__icon">
-                  <span className="material-symbols-outlined">verified</span>
-                </div>
+                <div className="feature__icon"><span className="material-symbols-outlined">verified</span></div>
                 <div className="feature__text">
-                  <h4>Qualité Sans Compromis</h4>
-                  <p>Une sélection rigoureuse des matériaux et des partenaires pour une durabilité maximale.</p>
+                  <h4>Moins de générique</h4>
+                  <p>Des équipements et des pièces pensés pour le CHR exigeant, capables de signer un lieu, pas des solutions standardisées.</p>
                 </div>
               </div>
               <div className="feature">
-                <div className="feature__icon">
-                  <span className="material-symbols-outlined">handshake</span>
-                </div>
+                <div className="feature__icon"><span className="material-symbols-outlined">handshake</span></div>
                 <div className="feature__text">
-                  <h4>Partenariat Durable</h4>
-                  <p>Nous ne sommes pas que des fournisseurs, nous sommes vos conseillers stratégiques sur le long terme.</p>
+                  <h4>Plus de cohérence</h4>
+                  <p>Une gamme complète qui s'intègre parfaitement à votre identité. Image, usage, délai et personnalisation enfin reliés.</p>
                 </div>
               </div>
             </div>
           </div>
+
           <div className="why-us__stats">
             <div className="stat-card glassmorphism-dark">
-              <p className="stat-value">98%</p>
-              <p className="label-md">Satisfaction Client</p>
+              <p className="stat-value">20 000</p>
+              <p className="label-md">Couverts / heure</p>
             </div>
             <div className="stat-card glassmorphism-dark">
-              <p className="stat-value">250+</p>
-              <p className="label-md">Hôtels Équipés</p>
+              <p className="stat-value">5 min</p>
+              <p className="label-md">Refroidissement Bouteille</p>
             </div>
             <div className="stat-card glassmorphism-dark mt-offset">
-              <p className="stat-value">100%</p>
-              <p className="label-md">Made in France</p>
+              <p className="stat-value">20 sec</p>
+              <p className="label-md">Givrage de Verres</p>
             </div>
             <div className="stat-card glassmorphism-dark">
-              <p className="stat-value">24/7</p>
-              <p className="label-md">Support Expert</p>
+              <p className="stat-value">100%</p>
+              <p className="label-md">Cohérence Globale</p>
             </div>
           </div>
+
+
         </div>
       </section>
 
@@ -225,23 +223,14 @@ export default async function Home() {
           <h2 className="headline-lg text-center">Questions fréquentes</h2>
           <div className="faq__list">
             <details className="faq__item ambient-shadow">
-              <summary>
-                Quels sont les délais de livraison pour le mobilier ?
-                <span className="material-symbols-outlined">expand_more</span>
-              </summary>
-              <div className="faq__content">
-                Comptez généralement 8 à 12 semaines pour une fabrication sur mesure dans nos ateliers français.
-              </div>
+              <summary>Quel est le rôle d'ATF ?<span className="material-symbols-outlined">expand_more</span></summary>
+              <div className="faq__content">ATF agit comme un chef d'orchestre entre besoin client, savoir-faire artisanaux et contraintes d'exploitation pour créer des lieux plus identifiables et mémorables.</div>
             </details>
             <details className="faq__item ambient-shadow">
-              <summary>
-                Intervenez-vous hors de France ?
-                <span className="material-symbols-outlined">expand_more</span>
-              </summary>
-              <div className="faq__content">
-                Bien que notre focus soit le marché français, nous accompagnons nos clients sur des projets d'exception en Europe et au Moyen-Orient.
-              </div>
+              <summary>Que comprend votre offre ?<span className="material-symbols-outlined">expand_more</span></summary>
+              <div className="faq__content">Notre offre s'articule autour de 3 piliers : la vaisselle artisanale (céramique, porcelaine), le mobilier et les machines (polisseuses, rafraîchisseurs), ainsi que l'expertise CHR.</div>
             </details>
+
           </div>
         </div>
       </section>
@@ -252,8 +241,8 @@ export default async function Home() {
           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAARXU5H68fklutPiIOMRzao1GFpM0gGbFruyr1eFXohVjEAox-omWrIyMoS3s1VP1gjBZNRSZFqm5GEumCRtVXtNkt0eWSmQj57HkozyJYlWRxWnan4oykmZCHzaIyqWDlIpUQ468k8L3GNyQCToxgHVVbjAebtvYjEM-iS3uBTqseHbXNdF6SLkgpsGNrCxzExmdb3EPy-w48WqGMcRnmskeLCDSy_pCYJmNFyMKsNrGFeAV22r1bCU0sO_6DvJH8bEJ3z8YG4CH-" alt="Luxury hotel abstract" />
         </div>
         <div className="container cta__content">
-          <h2 className="display-lg text-white">Vous avez un projet ? On en parle ?</h2>
-          <p className="text-white">Transformez votre vision en réalité avec nos experts en art de la table et hôtellerie.</p>
+          <h2 className="display-lg text-white">Construisons votre projet</h2>
+          <p className="text-white">Pour toute demande d'information, de devis ou de mise en place d'une prestation client mystère, nous serons ravis d'échanger avec vous.</p>
           <Link href="/rendez-vous" className="btn-primary">Prise de rendez-vous</Link>
         </div>
       </section>
