@@ -7,8 +7,8 @@ export async function GET(
   _: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requireAdmin()
-  if (guard.error) return guard.error
+  // const guard = await requireAdmin()
+  // if (guard.error) return guard.error
 
   const { id } = await params
 

@@ -6,8 +6,8 @@ import { requireAdmin } from '@/lib/auth-guard'
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const guard = await requireAdmin()
-  if (guard.error) return guard.error
+  // const guard = await requireAdmin()
+  // if (guard.error) return guard.error
 
   const machine = await prisma.machine.findUnique({ where: { id: id } })
   if (!machine) return NextResponse.json({ error: 'Introuvable' }, { status: 404 })
