@@ -24,7 +24,7 @@ export default function ClientMystere() {
               Évaluez votre établissement avec un regard professionnel, discret et objectif.
             </p>
             <div className="hero-actions">
-              <Link href="/devis" className="btn-primary">Demander un devis</Link>
+              <Link href="/contact" className="btn-primary">Demander un devis</Link>
               <Link href="/contact" className="btn-secondary-outline">Nous contacter</Link>
             </div>
           </div>
