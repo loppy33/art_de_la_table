@@ -1,0 +1,808 @@
+// ============================================================
+// CHAT SYSTEM — L'Art de la Table à la Française
+// ============================================================
+
+// ── Auth Modal ────────────────────────────────────────────────────────────────
+.chat-auth
+  min-height: 100vh
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: var(--surface-container-low)
+  padding: var(--spacing-6)
+
+  &__card
+    width: 100%
+    max-width: 480px
+    background-color: var(--surface-container-lowest)
+    border-radius: var(--radius-xl)
+    box-shadow: var(--shadow-floating)
+    padding: var(--spacing-10) var(--spacing-8)
+    @media (max-width: 480px)
+      padding: var(--spacing-8) var(--spacing-5)
+      border-radius: var(--radius-lg)
+
+  &__logo
+    font-family: var(--font-heading)
+    font-size: var(--text-headline-sm)
+    color: var(--primary)
+    text-align: center
+    margin-bottom: var(--spacing-2)
+    line-height: 1.3
+
+  &__title
+    font-family: var(--font-heading)
+    font-size: 1.75rem
+    color: var(--primary)
+    text-align: center
+    margin-bottom: var(--spacing-2)
+
+  &__sub
+    color: var(--on-surface-variant)
+    text-align: center
+    margin-bottom: var(--spacing-8)
+    font-size: var(--text-body-md)
+    line-height: 1.6
+
+  &__form
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-4)
+
+  &__row
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: var(--spacing-3)
+    @media (max-width: 480px)
+      grid-template-columns: 1fr
+
+  &__field
+    display: flex
+    flex-direction: column
+    gap: 0.4rem
+
+    label
+      font-size: var(--text-label-md)
+      font-weight: 600
+      text-transform: uppercase
+      letter-spacing: 0.1em
+      color: var(--on-surface-variant)
+
+    input
+      padding: 0.75rem var(--spacing-3)
+      border-radius: var(--radius-lg)
+      background-color: var(--surface-container)
+      font-family: var(--font-body)
+      font-size: var(--text-body-md)
+      color: var(--on-background)
+      border: none
+      transition: box-shadow 0.2s ease
+      -webkit-appearance: none
+
+      &:focus
+        outline: none
+        box-shadow: 0 0 0 2px var(--secondary-container)
+
+  &__error
+    color: #c0392b
+    font-size: var(--text-body-md)
+    text-align: center
+    background-color: rgba(192, 57, 43, 0.06)
+    padding: var(--spacing-2) var(--spacing-3)
+    border-radius: var(--radius-md)
+
+  &__btn
+    padding: 0.9rem
+    background-color: var(--primary)
+    color: var(--on-primary)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    font-weight: 600
+    border-radius: var(--radius-lg)
+    cursor: pointer
+    transition: opacity 0.2s ease
+    width: 100%
+    margin-top: var(--spacing-2)
+
+    &:hover
+      opacity: 0.88
+
+    &:disabled
+      opacity: 0.5
+      cursor: not-allowed
+
+  &__switch
+    text-align: center
+    margin-top: var(--spacing-6)
+    color: var(--on-surface-variant)
+    font-size: var(--text-body-md)
+
+    button
+      color: var(--secondary)
+      font-weight: 600
+      background: none
+      cursor: pointer
+      margin-left: 4px
+      text-decoration: underline
+
+// ── Espace Client Layout ──────────────────────────────────────────────────────
+// Occupe toute la fenêtre sous le header — utilise 100dvh pour mobile
+.espace-client
+
+  display: flex
+  margin: 0 auto
+  // dvh = dynamic viewport height, gère correctement les barres mobiles
+  height: calc(100dvh - var(--header-height, 70px))
+  min-height: 100vh
+  width: 100%
+  padding-top: 64px
+  overflow: hidden
+  background-color: var(--surface-container-low)
+  position: relative
+
+  // Sur mobile: sidebar et chat s'empilent, on contrôle lequel est visible
+  @media (max-width: 768px)
+    height: calc(100dvh - var(--header-height, 60px))
+    flex-direction: column
+
+// ── Chat Sidebar ──────────────────────────────────────────────────────────────
+.chat-sidebar
+  width: 320px
+  min-width: 320px
+  background-color: var(--surface-container-lowest)
+  border-right: 1px solid var(--surface-container)
+  display: flex
+  flex-direction: column
+  flex-shrink: 0
+  // Transition fluide pour le slide mobile
+  transition: transform 0.3s ease
+
+  @media (max-width: 768px)
+    width: 100%
+    min-width: 0
+    border-right: none
+    border-bottom: 1px solid var(--surface-container)
+    // Par défaut visible, caché quand une room est active
+    &.chat-sidebar--hidden
+      display: none
+
+  &__header
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: var(--spacing-4)
+    border-bottom: 1px solid var(--surface-container)
+    flex-shrink: 0
+
+  &__user
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)
+    min-width: 0
+
+  &__avatar
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background: linear-gradient(135deg, var(--primary), var(--secondary))
+    color: var(--on-primary)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: var(--font-heading)
+    font-size: 1.125rem
+    font-weight: 700
+    flex-shrink: 0
+
+  &__name
+    font-weight: 600
+    font-size: var(--text-body-md)
+    color: var(--primary)
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  &__role
+    font-size: var(--text-label-sm)
+    color: var(--outline)
+    margin: 0
+    text-transform: uppercase
+    letter-spacing: 0.08em
+
+  &__logout
+    background: none
+    cursor: pointer
+    color: var(--outline)
+    display: flex
+    align-items: center
+    justify-content: center
+    transition: all 0.2s ease
+    padding: var(--spacing-2)
+    border-radius: var(--radius-md)
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    &:hover
+      color: #c0392b
+      background-color: rgba(192, 57, 43, 0.08)
+
+    .material-symbols-outlined
+      font-size: 20px
+
+  &__tabs
+    display: flex
+    border-bottom: 1px solid var(--surface-container)
+    flex-shrink: 0
+
+  &__rooms
+    flex: 1
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+
+  &__empty
+    padding: var(--spacing-10) var(--spacing-6)
+    text-align: center
+    color: var(--outline)
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-4)
+    align-items: center
+
+    .material-symbols-outlined
+      font-size: 3rem
+      color: var(--outline-variant)
+
+.chat-tab
+  flex: 1
+  padding: var(--spacing-3) var(--spacing-2)
+  font-family: var(--font-body)
+  font-size: var(--text-label-md)
+  font-weight: 600
+  color: var(--on-surface-variant)
+  background: none
+  cursor: pointer
+  border-bottom: 2px solid transparent
+  transition: all 0.2s ease
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 6px
+  white-space: nowrap
+
+  .material-symbols-outlined
+    font-size: 16px
+
+  &--active
+    color: var(--primary)
+    border-bottom-color: var(--secondary)
+
+// ── Room / Artisan Items ──────────────────────────────────────────────────────
+.chat-room-item,
+.chat-artisan-item
+  display: flex
+  align-items: center
+  gap: var(--spacing-3)
+  padding: var(--spacing-4)
+  cursor: pointer
+  transition: background-color 0.15s ease
+  border-bottom: 1px solid var(--surface-container)
+  min-height: 72px
+
+  @media (max-width: 768px)
+    padding: var(--spacing-4) var(--spacing-4)
+    min-height: 64px
+
+  &:hover
+    background-color: var(--surface-container-low)
+
+  &:active
+    background-color: var(--surface-container)
+
+  &__avatar
+    width: 46px
+    height: 46px
+    border-radius: 50%
+    background-color: var(--secondary-container)
+    color: var(--on-secondary-container)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: var(--font-heading)
+    font-size: 1.125rem
+    font-weight: 700
+    flex-shrink: 0
+
+  &__info
+    flex: 1
+    min-width: 0
+
+  &__name
+    font-weight: 600
+    font-size: var(--text-body-md)
+    color: var(--primary)
+    margin: 0 0 2px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  &__preview
+    font-size: var(--text-label-md)
+    color: var(--on-surface-variant)
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+.chat-room-item
+  &--active
+    background-color: var(--secondary-container)
+
+    .chat-room-item__name
+      color: var(--on-secondary-container)
+
+    .chat-room-item__preview
+      color: var(--on-secondary-container)
+      opacity: 0.75
+
+  &--unread
+    .chat-room-item__name
+      font-weight: 700
+
+    .chat-room-item__preview
+      color: var(--primary)
+      font-weight: 500
+
+.chat-artisan-item
+  &__logo
+    width: 46px
+    height: 46px
+    border-radius: 50%
+    object-fit: contain
+    background-color: var(--surface-container)
+
+// Badge non-lus
+.chat-badge
+  background-color: var(--primary)
+  color: var(--on-primary)
+  font-size: 11px
+  font-weight: 700
+  min-width: 20px
+  height: 20px
+  padding: 0 6px
+  border-radius: 2rem
+  flex-shrink: 0
+  display: flex
+  align-items: center
+  justify-content: center
+
+// ── Chat Main ─────────────────────────────────────────────────────────────────
+.chat-main
+  flex: 1
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  min-width: 0
+
+  @media (max-width: 768px)
+    // Caché quand on est sur la sidebar (pas de room active)
+    &.chat-main--hidden
+      display: none
+
+  &__empty
+    flex: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: var(--spacing-5)
+    color: var(--outline)
+    text-align: center
+    padding: var(--spacing-8)
+    background-color: var(--surface-container-low)
+
+    .material-symbols-outlined
+      font-size: 4rem
+      color: var(--outline-variant)
+      opacity: 0.5
+
+    h2
+      font-family: var(--font-heading)
+      font-size: 1.5rem
+      color: var(--primary)
+      margin: 0
+
+    p
+      margin: 0
+      max-width: 280px
+
+// ── Chat Window ───────────────────────────────────────────────────────────────
+.chat-window
+  display: flex
+  flex-direction: column
+  height: 100%
+  background-color: var(--surface-container-low)
+  overflow: hidden
+
+  &__header
+    display: flex
+    align-items: center
+    gap: var(--spacing-3)
+    padding: var(--spacing-3) var(--spacing-5)
+    background-color: var(--surface-container-lowest)
+    border-bottom: 1px solid var(--surface-container)
+    flex-shrink: 0
+    min-height: 64px
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06)
+
+  // Bouton retour — visible seulement mobile
+  &__back
+    display: none
+    align-items: center
+    justify-content: center
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    background: none
+    cursor: pointer
+    color: var(--primary)
+    flex-shrink: 0
+    transition: background-color 0.2s ease
+
+    &:hover
+      background-color: var(--surface-container)
+
+    .material-symbols-outlined
+      font-size: 22px
+
+    @media (max-width: 768px)
+      display: flex
+
+  &__avatar
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background: linear-gradient(135deg, var(--primary), var(--secondary))
+    color: var(--on-primary)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-family: var(--font-heading)
+    font-size: 1.125rem
+    font-weight: 700
+    flex-shrink: 0
+
+  &__info
+    flex: 1
+    min-width: 0
+
+  &__name
+    font-weight: 600
+    font-size: var(--text-body-md)
+    color: var(--primary)
+    margin: 0
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  &__typing
+    font-size: var(--text-label-sm)
+    color: var(--secondary)
+    margin: 0
+    font-style: italic
+    animation: pulse 1.5s ease-in-out infinite
+
+  &__messages
+    flex: 1
+    overflow-y: auto
+    padding: var(--spacing-5) var(--spacing-5)
+    display: flex
+    flex-direction: column
+    gap: var(--spacing-3)
+    scroll-behavior: smooth
+    -webkit-overflow-scrolling: touch
+
+    @media (max-width: 480px)
+      padding: var(--spacing-4) var(--spacing-3)
+      gap: var(--spacing-2)
+
+  &__empty
+    flex: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: var(--spacing-3)
+    color: var(--outline)
+    padding: var(--spacing-8)
+    text-align: center
+
+    .material-symbols-outlined
+      font-size: 3rem
+      opacity: 0.4
+
+    p
+      font-size: var(--text-body-md)
+
+  &__input-bar
+    display: flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: var(--spacing-3) var(--spacing-4)
+    background-color: var(--surface-container-lowest)
+    border-top: 1px solid var(--surface-container)
+    flex-shrink: 0
+    // Safe area pour iPhone X+
+    padding-bottom: max(var(--spacing-3), env(safe-area-inset-bottom))
+
+    @media (max-width: 480px)
+      padding: var(--spacing-2) var(--spacing-3)
+      padding-bottom: max(var(--spacing-2), env(safe-area-inset-bottom))
+
+@keyframes pulse
+  0%, 100%
+    opacity: 1
+  50%
+    opacity: 0.4
+
+// ── Messages ──────────────────────────────────────────────────────────────────
+.chat-message
+  display: flex
+  flex-direction: column
+  max-width: 75%
+
+  @media (max-width: 480px)
+    max-width: 88%
+
+  &--mine
+    align-self: flex-end
+    align-items: flex-end
+
+  &--theirs
+    align-self: flex-start
+    align-items: flex-start
+
+  &__sender
+    font-size: 11px
+    font-weight: 600
+    color: var(--outline)
+    margin-bottom: 3px
+    text-transform: uppercase
+    letter-spacing: 0.06em
+    padding: 0 var(--spacing-2)
+
+  &__bubble
+    position: relative
+    padding: var(--spacing-3) var(--spacing-4)
+    border-radius: 18px
+    max-width: 100%
+    word-break: break-word
+    margin: .2rem 
+
+    .chat-message--mine &
+      background-color: var(--primary)
+      color: var(--on-primary)
+      border-bottom-right-radius: 4px
+
+    .chat-message--theirs &
+      background-color: var(--surface-container-lowest)
+      color: var(--on-background)
+      border-bottom-left-radius: 4px
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08)
+
+  &__text
+    margin: 0 0 3px
+    font-size: var(--text-body-md)
+    line-height: 1.55
+    word-break: break-word
+    white-space: pre-wrap
+
+  &__image
+    max-width: 240px
+    max-height: 240px
+    border-radius: var(--radius-md)
+    object-fit: cover
+    display: block
+    cursor: pointer
+    transition: opacity 0.2s ease
+    margin-bottom: 3px
+
+    @media (max-width: 480px)
+      max-width: 200px
+      max-height: 200px
+
+    &:hover
+      opacity: 0.9
+
+  &__file
+    display: flex
+    align-items: center
+    gap: var(--spacing-2)
+    padding: var(--spacing-2) var(--spacing-3)
+    border-radius: var(--radius-md)
+    margin-bottom: 3px
+    text-decoration: none
+    transition: opacity 0.2s ease
+
+    &:hover
+      opacity: 0.8
+
+    .chat-message--mine &
+      background-color: rgba(255,255,255,0.18)
+      color: var(--on-primary)
+
+    .chat-message--theirs &
+      background-color: var(--surface-container)
+      color: var(--primary)
+
+    .material-symbols-outlined
+      font-size: 20px
+      flex-shrink: 0
+
+  &__filename
+    font-weight: 600
+    font-size: var(--text-body-md)
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    max-width: 160px
+
+    @media (max-width: 480px)
+      max-width: 120px
+
+  &__filesize
+    font-size: var(--text-label-sm)
+    opacity: 0.65
+    flex-shrink: 0
+
+  &__time
+    font-size: 10px
+    opacity: 0.55
+    display: block
+    text-align: right
+    margin-top: 2px
+    padding: 0 2px
+
+// ── Date separator ────────────────────────────────────────────────────────────
+.chat-date-separator
+  display: flex
+  align-items: center
+  gap: var(--spacing-3)
+  margin: var(--spacing-3) 0
+
+  &::before,
+  &::after
+    content: ''
+    flex: 1
+    height: 1px
+    background-color: var(--outline-variant)
+    opacity: 0.3
+
+  span
+    font-size: 11px
+    font-weight: 600
+    color: var(--outline)
+    text-transform: uppercase
+    letter-spacing: 0.08em
+    white-space: nowrap
+    background-color: var(--surface-container-low)
+    padding: 2px 8px
+    border-radius: 2rem
+
+// ── Input bar ─────────────────────────────────────────────────────────────────
+.chat-input
+  &__attach,
+  &__send
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 40px
+    height: 40px
+    border-radius: 50%
+    background: none
+    cursor: pointer
+    transition: all 0.2s ease
+    flex-shrink: 0
+    border: none
+
+    .material-symbols-outlined
+      font-size: 22px
+
+  &__attach
+    color: var(--outline)
+
+    &:hover, &:active
+      background-color: var(--surface-container)
+      color: var(--primary)
+
+  &__text
+    flex: 1
+    padding: 0.65rem var(--spacing-4)
+    border-radius: 2rem
+    background-color: var(--surface-container)
+    font-family: var(--font-body)
+    font-size: var(--text-body-md)
+    color: var(--on-background)
+    border: none
+    transition: box-shadow 0.2s ease
+    -webkit-appearance: none
+    min-height: 40px
+    line-height: 1.4
+
+    &:focus
+      outline: none
+      box-shadow: 0 0 0 2px var(--secondary-container)
+
+    &::placeholder
+      color: var(--outline)
+
+  &__send
+    background-color: var(--primary)
+    color: var(--on-primary)
+    flex-shrink: 0
+    transition: opacity 0.2s ease, transform 0.15s ease
+
+    &:hover:not(:disabled)
+      opacity: 0.88
+      transform: scale(1.05)
+
+    &:disabled
+      background-color: var(--surface-container)
+      color: var(--outline)
+      cursor: not-allowed
+      transform: none
+
+// ── Admin Chat Layout ─────────────────────────────────────────────────────────
+.admin-chat
+  &__layout
+    display: grid
+    grid-template-columns: 340px 1fr
+    height: calc(100vh - 180px)
+    min-height: 500px
+    gap: 0
+    background-color: var(--surface-container-lowest)
+    border-radius: var(--radius-xl)
+    box-shadow: var(--shadow-ambient)
+    overflow: hidden
+
+    @media (max-width: 900px)
+      grid-template-columns: 1fr
+      height: calc(100vh - 160px)
+
+    @media (max-width: 600px)
+      height: calc(100dvh - 140px)
+      border-radius: var(--radius-lg)
+
+  &__sidebar
+    border-right: 1px solid var(--surface-container)
+    display: flex
+    flex-direction: column
+    overflow: hidden
+
+  &__tabs
+    display: flex
+    border-bottom: 1px solid var(--surface-container)
+    flex-shrink: 0
+
+  &__tab
+    flex: 1
+    padding: var(--spacing-3)
+    font-family: var(--font-body)
+    font-size: var(--text-label-md)
+    font-weight: 600
+    color: var(--on-surface-variant)
+    background: none
+    cursor: pointer
+    border-bottom: 2px solid transparent
+    transition: all 0.2s ease
+    white-space: nowrap
+
+    &--active
+      color: var(--primary)
+      border-bottom-color: var(--secondary)
+
+  &__main
+    display: flex
+    flex-direction: column
+    overflow: hidden

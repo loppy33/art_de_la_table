@@ -22,6 +22,7 @@ model Artisan {
   history  String?
   featured Boolean   @default(false)
   products Product[]
+  chatUsers ChatUser[]
 }
 
 model Product {
@@ -109,3 +110,66 @@ enum RdvStatus {
   CONFIRMED
   CANCELLED
 }
+
+
+
+model ChatUser {
+  id        String       @id @default(cuid())
+  email     String       @unique
+  password  String
+  firstName String
+  lastName  String
+  role      ChatUserRole @default(CLIENT)
+  artisanId String?      // если ARTISAN — ссылка на artisan
+  artisan   Artisan?     @relation(fields: [artisanId], references: [id])
+  createdAt DateTime     @default(now())
+
+  // Relations
+  roomsAsClient   ChatRoom[] @relation("ClientRooms")
+  roomsAsArtisan  ChatRoom[] @relation("ArtisanRooms")
+  messages        Message[]
+}
+
+enum ChatUserRole {
+  CLIENT
+  ARTISAN
+  ADMIN
+}
+
+// ── Комнаты чата ───────────────────────────────────────────────────────────
+
+model ChatRoom {
+  id         String    @id @default(cuid())
+  clientId   String
+  artisanId  String
+  client     ChatUser  @relation("ClientRooms",  fields: [clientId],  references: [id])
+  artisan    ChatUser  @relation("ArtisanRooms", fields: [artisanId], references: [id])
+  createdAt  DateTime  @default(now())
+  lastMsgAt  DateTime  @default(now())
+  messages   Message[]
+
+  @@unique([clientId, artisanId]) // один диалог на пару
+}
+
+// ── Сообщения ──────────────────────────────────────────────────────────────
+
+model Message {
+  id         String      @id @default(cuid())
+  roomId     String
+  senderId   String
+  room       ChatRoom    @relation(fields: [roomId],   references: [id])
+  sender     ChatUser    @relation(fields: [senderId], references: [id])
+  type       MessageType @default(TEXT)
+  content    String      // текст или URL файла
+  fileName   String?     // оригинальное имя файла
+  fileSize   Int?        // в байтах
+  read       Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+}
+
+enum MessageType {
+  TEXT
+  IMAGE
+  FILE
+}
+

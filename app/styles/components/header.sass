@@ -23,19 +23,80 @@
 
     @media (min-width: 1030px)
       display: flex
+      align-items: center // Выравниваем все элементы строго по центру
       gap: var(--spacing-6)
 
-    a
+    // Стили для обычных ссылок
+    > a
       color: var(--on-surface-variant)
       font-weight: 500
-
+      padding-bottom: 4px
+      border-bottom: 2px solid transparent // Прозрачный бордер, чтобы сохранить высоту
+      transition: color 0.2s, border-color 0.2s
+      
       &.active, &:hover
         color: var(--primary)
 
       &.active
-        border-bottom: 2px solid var(--secondary)
-        padding-bottom: 4px
+        border-bottom-color: var(--secondary)
 
+  // Стили для дропдауна (убедись, что они на одном уровне с &__links, если используешь БЭМ)
+  &__dropdown
+    position: relative
+    display: flex
+    align-items: center // Выравниваем сам блок дропдауна
+    
+    &-trigger
+      color: var(--on-surface-variant)
+      font-weight: 500
+      cursor: pointer
+      display: flex
+      align-items: center
+      gap: 4px
+      padding-bottom: 6px // 4px padding + 2px border от соседних ссылок = 6px компенсации
+      transition: color 0.2s
+      
+      small
+        font-size: 0.6em
+        opacity: 0.6
+
+      &:hover
+        color: var(--primary)
+
+    &-menu
+      position: absolute
+      top: 100%
+      left: 50%
+      transform: translateX(-50%) translateY(10px)
+      background: var(--surface-container-lowest, #fff)
+      box-shadow: 0 10px 30px rgba(0, 12, 30, 0.08)
+      border-radius: var(--radius-md, 12px)
+      padding: var(--spacing-2) 0
+      min-width: 200px
+      opacity: 0
+      visibility: hidden
+      transition: all 0.25s ease
+      display: flex
+      flex-direction: column
+      z-index: 100
+
+      a
+        padding: 10px 20px
+        color: var(--on-surface-variant)
+        font-weight: 400
+        border: none // Сбрасываем бордер для ссылок внутри меню
+        
+        &:hover, &.active
+          background: var(--surface-container-low, #f4f5f7)
+          color: var(--primary)
+          border: none
+          padding-bottom: 10px // Возвращаем обычный паддинг
+
+    // Показываем меню при наведении
+    &:hover &-menu
+      opacity: 1
+      visibility: visible
+      transform: translateX(-50%) translateY(0)
   &__actions
     align-items: center
     gap: var(--spacing-3)
@@ -86,7 +147,6 @@
 
       span:nth-child(3)
         transform: translateY(-6.5px) rotate(-45deg)
-
 
 // --- Mobile drawer ---
 .mobile-menu
@@ -149,6 +209,32 @@
     backdrop-filter: blur(2px)
     animation: fadeIn 0.3s ease
 
+  &__group
+    display: flex
+    flex-direction: column
+    margin-bottom: var(--spacing-2)
+
+    &-title
+      font-family: var(--font-heading)
+      font-size: 0.9rem
+      text-transform: uppercase
+      letter-spacing: 0.05em
+      color: var(--outline)
+      padding: var(--spacing-3) 0 var(--spacing-1)
+
+    &__link
+      // ... твои текущие стили
+
+      &--sub
+        padding-left: var(--spacing-3)
+        font-size: 1rem
+        border-left: 2px solid transparent
+        border-bottom: none // Убираем полосу снизу для суб-ссылок
+
+        &:hover, &.active
+          border-left-color: var(--primary)
+          border-bottom: none
+          padding-left: var(--spacing-4)
 @keyframes fadeIn
   from
     opacity: 0

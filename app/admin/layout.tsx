@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import { useEffect, useState } from 'react'
+import { ChatProvider } from '../context/ChatContext'
 
 const NAV = [
   { href: '/admin', label: 'Tableau de bord', icon: 'dashboard' },
@@ -15,6 +16,7 @@ const NAV = [
   { href: '/admin/machines', label: 'Machines', icon: 'precision_manufacturing' },
   { href: '/admin/testimonials', label: 'Témoignages', icon: 'format_quote' },
   { href: '/admin/content', label: 'Contenu du site', icon: 'edit_note' },
+  { href: '/admin/chat', label: 'Messagerie', icon: 'forum' },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -25,7 +27,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     fetch('/api/admin/stats')
       .then(r => r.json())
       .then(d => setUnread(d.unreadContacts ?? 0))
-      .catch(() => {})
+      .catch(() => { })
   }, [pathname])
 
   if (pathname === '/admin/login') return <>{children}</>
@@ -64,7 +66,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </button>
         </div>
       </aside>
-      <main className="admin-main">{children}</main>
+      <ChatProvider>
+        <main className="admin-main">{children}</main>
+      </ChatProvider>
     </div>
   )
 }
