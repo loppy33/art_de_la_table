@@ -11,6 +11,17 @@ export async function DELETE(
   const guard = await requireAdmin()
   if (guard.error) return guard.error
 
+  await prisma.message.deleteMany({
+    where: {
+      room: {
+        OR: [
+          { artisanId: id },
+          { clientId: id },
+        ],
+      },
+    },
+  })
+
   await prisma.chatRoom.deleteMany({
     where: {
       OR: [
