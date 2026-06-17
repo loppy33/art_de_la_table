@@ -6,14 +6,24 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params
+  try {
+    console.log("DELETE HIT", params)
 
-  const guard = await requireAdmin()
-  if (guard.error) return guard.error
+    const { id } = await params
 
-  await prisma.chatUser.delete({
-    where: { id },
-  })
+    const guard = await requireAdmin()
+    console.log("GUARD:", guard)
 
-  return NextResponse.json({ success: true })
+    await prisma.chatUser.deleteMany({
+      where: { id },
+    })
+
+    return NextResponse.json({ success: true })
+  } catch (e) {
+    console.error("DELETE ERROR:", e)
+    return NextResponse.json(
+      { error: "internal error" },
+      { status: 500 }
+    )
+  }
 }
